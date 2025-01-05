@@ -1,0 +1,149 @@
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "DPHubUI"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Main Frame with Loading Animation
+local loadingFrame = Instance.new("Frame")
+loadingFrame.Size = UDim2.new(0, 200, 0, 100)
+loadingFrame.Position = UDim2.new(0.5, -100, 0.5, -50)
+loadingFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+loadingFrame.BorderSizePixel = 0
+loadingFrame.Parent = screenGui
+
+local loadingText = Instance.new("TextLabel")
+loadingText.Size = UDim2.new(1, 0, 1, 0)
+loadingText.Text = "Loading DP Hub..."
+loadingText.TextColor3 = Color3.fromRGB(255, 255, 255)
+loadingText.BackgroundTransparency = 1
+loadingText.Font = Enum.Font.SourceSansBold
+loadingText.TextSize = 24
+loadingText.Parent = loadingFrame
+
+-- Loading animation effect (fading out)
+for i = 1, 10 do
+    loadingFrame.BackgroundTransparency = i / 10
+    loadingText.TextTransparency = i / 10
+    task.wait(0.1)
+end
+
+task.wait(2)
+loadingFrame:Destroy()
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 450, 0, 350)
+mainFrame.Position = UDim2.new(0.5, -225, 0.5, -175)
+mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+mainFrame.BorderSizePixel = 0
+mainFrame.Visible = true
+mainFrame.Draggable = true -- Make mainFrame draggable
+mainFrame.Active = true
+mainFrame.Parent = screenGui
+
+-- Gradient Background
+local gradient = Instance.new("UIGradient")
+gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 50, 50)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
+}
+gradient.Rotation = 90
+gradient.Parent = mainFrame
+
+-- Title
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 50)
+title.Text = "DP HUB / EH Script"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 28
+title.TextXAlignment = Enum.TextXAlignment.Left
+title.Parent = mainFrame
+
+-- Close Button
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 30, 0, 30)
+closeButton.Position = UDim2.new(1, -35, 0, 10)
+closeButton.Text = "X"
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+closeButton.Font = Enum.Font.SourceSansBold
+closeButton.TextSize = 16
+closeButton.Parent = mainFrame
+
+-- Button List
+local buttonFrame = Instance.new("ScrollingFrame")
+buttonFrame.Size = UDim2.new(1, 0, 1, -100)
+buttonFrame.Position = UDim2.new(0, 0, 0, 50)
+buttonFrame.CanvasSize = UDim2.new(0, 0, 0, 600) -- Allows scrolling
+buttonFrame.ScrollBarThickness = 6
+buttonFrame.BackgroundTransparency = 1
+buttonFrame.Parent = mainFrame
+
+-- Function to create buttons
+local buttonNames = {
+    {Name = "Aimbot", Emoji = "🎯"},
+    {Name = "Mains", Emoji = "💀"},
+    {Name = "Misc", Emoji = "🤹"},
+    {Name = "Car Mods", Emoji = "🚗"},
+    {Name = "Teleport", Emoji = "📍"}
+}
+
+for i, info in ipairs(buttonNames) do
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(1, -20, 0, 40)
+    button.Position = UDim2.new(0, 10, 0, (i - 1) * 50)
+    button.Text = "•   " .. info.Name .. " " .. info.Emoji
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    button.Font = Enum.Font.SourceSans
+    button.TextSize = 20
+    button.TextXAlignment = Enum.TextXAlignment.Left
+    button.Parent = buttonFrame
+
+    -- Add hover effect
+    button.MouseEnter:Connect(function()
+        button.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+    end)
+
+    button.MouseLeave:Connect(function()
+        button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    end)
+end
+
+-- Add Thanks Message
+local thanksMessage = Instance.new("TextLabel")
+thanksMessage.Size = UDim2.new(1, -20, 0, 40)
+thanksMessage.Position = UDim2.new(0, 10, 0, #buttonNames * 50 + 10)
+thanksMessage.Text = "Thanks for choosing us!\nJoin our Discord for updates!"
+thanksMessage.TextColor3 = Color3.fromRGB(255, 255, 255)
+thanksMessage.BackgroundTransparency = 1
+thanksMessage.Font = Enum.Font.SourceSansItalic
+thanksMessage.TextSize = 18
+thanksMessage.TextWrapped = true
+thanksMessage.Parent = buttonFrame
+
+-- Small Tool (Appears after closing the menu)
+local smallTool = Instance.new("TextButton")
+smallTool.Size = UDim2.new(0, 150, 0, 30)
+smallTool.Position = UDim2.new(0.5, -75, 0, 0)
+smallTool.Text = "Enjoy DP Hub 🐉"
+smallTool.TextColor3 = Color3.fromRGB(255, 255, 255)
+smallTool.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+smallTool.Font = Enum.Font.SourceSansBold
+smallTool.TextSize = 16
+smallTool.Visible = false
+smallTool.Draggable = true
+smallTool.Parent = screenGui
+
+-- Close/Small Tool Logic
+closeButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = false
+    smallTool.Visible = true
+end)
+
+smallTool.MouseButton1Click:Connect(function()
+    mainFrame.Visible = true
+    smallTool.Visible = false
+end)
