@@ -1,0 +1,756 @@
+-- Check if OrionLib GUI is already running and remove it
+if game.CoreGui:FindFirstChild("Orion") then
+    game.CoreGui:FindFirstChild("Orion"):Destroy()
+end
+
+-- Load OrionLib
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Orion_Library_PE_V2.lua"))()
+local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+
+-- Get the player's display name
+local player = game.Players.LocalPlayer
+local displayName = player.DisplayName
+
+-- Create Window
+local Window = OrionLib:MakeWindow({
+    IntroText = "DP HUB 🐉",
+    IntroIcon = "rbxassetid://8834748103",
+    Name = " DP HUB 🐉-MM2 | ".. identifyexecutor(),
+    IntroToggleIcon = "rbxassetid://7734091286",
+    HidePremium = false,
+    SaveConfig = false,
+    IntroEnabled = true,
+    ConfigFolder = "Universal"
+})
+
+-- Replace 'User' text in bottom-left corner with Display Name
+wait(1) -- Wait before attempting to replace the text
+for _, v in pairs(game.CoreGui:GetDescendants()) do
+    if v:IsA("TextLabel") and v.Text == "User" then
+        v.Text = displayName
+    end
+end
+
+-- Tabs
+local Tab = Window:MakeTab({ Name = "Info", Icon = "rbxassetid://7734053426", PremiumOnly = false })
+local Tab1 = Window:MakeTab({ Name = "Script", Icon = "rbxassetid://8997387937", PremiumOnly = false })
+local Tab2 = Window:MakeTab({ Name = "Anti", Icon = "rbxassetid://7734056608", PremiumOnly = false })
+local Tab5 = Window:MakeTab({ Name = "Local", Icon = "rbxassetid://4335489011", PremiumOnly = false })
+local Tab7 = Window:MakeTab({ Name = "Misc", Icon = "rbxassetid://4370318685", PremiumOnly = false })
+local Tab7 = Window:MakeTab({ Name = "Teleport", Icon = "rbxassetid://7733917120", PremiumOnly = false })
+local Tab11 = Window:MakeTab({ Name = "Troller", Icon = "rbxassetid://7733673987", PremiumOnly = false })
+local Tab15 = Window:MakeTab({ Name = "Credit", Icon = "rbxassetid://7733955511", PremiumOnly = false })
+
+-- Info Tab Content
+Tab:AddParagraph("DP HUB | Discord", " [ DP HUB ]: Thank you for choosing DP HUB! We truly appreciate your support.| [ Discord ]: Don’t forget to join our Discord for exclusive updates and to connect with our community!, go to the credits section ] | Good Luck")
+
+Tab:AddLabel("Your Fps [ "..math.floor(workspace:GetRealPhysicsFPS()).." ]")
+Tab:AddLabel("Your Ping [ "..game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString().." ]")
+Tab:AddLabel("Player In Server [ "..#game.Players:GetPlayers().." / "..game.Players.MaxPlayers.." ]")
+Tab:AddLabel("Server Time [ "..math.floor(workspace.DistributedGameTime / 60 / 60).." Hour | "..math.floor(workspace.DistributedGameTime / 60) - (math.floor(workspace.DistributedGameTime / 60 / 60) * 60).." Minute | "..math.floor(workspace.DistributedGameTime) - (math.floor(workspace.DistributedGameTime / 60) * 60).." Second ]")
+Tab:AddLabel("Now Time [ "..os.date("%X").." ]")
+Tab:AddLabel("Your Account Age [ "..game.Players.LocalPlayer.AccountAge.." ]")
+
+local InfoServer = Tab:AddSection({Name = "Local Player"})
+
+local function UpdateStats()
+    local player = game.Players.LocalPlayer
+    local character = player.Character
+    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid then
+        if character:FindFirstChild("rock") then
+            WalkspeedYou:Set("Walk Speed [ Not Walk then rock ]")
+            JumppowerYou:Set("Jump Power [ Not Jump Power then rock ]")
+            HealthYou:Set("Health You [ Not Health then rock ]")
+            HipHeightYou:Set("Hip Height [ Not Hip then rock ]")
+        else
+            WalkspeedYou:Set("Walk Speed [ "..humanoid.WalkSpeed.." ]")
+            JumppowerYou:Set("Jump Power [ "..humanoid.JumpPower.." ]")
+            HealthYou:Set("Health You [ "..humanoid.Health.." ]")
+            HipHeightYou:Set("Hip Height [ "..humanoid.HipHeight.." ]")
+        end
+
+        GravityYou:Set("Gravity [ "..game.Workspace.Gravity.." ]")
+
+        if character:FindFirstChild("HumanoidRootPart") then
+            local pos = character.HumanoidRootPart.Position
+            PositionYou:Set("Position In Your [ "..math.round(pos.X)..", "..math.round(pos.Y)..", "..math.round(pos.Z).." ]")
+        end
+    end
+end
+
+WalkspeedYou = Tab:AddLabel("Walk Speed [ Loading... ]")
+JumppowerYou = Tab:AddLabel("Jump Power [ Loading... ]")
+HealthYou = Tab:AddLabel("Health You [ Loading... ]")
+HipHeightYou = Tab:AddLabel("Hip Height [ Loading... ]")
+GravityYou = Tab:AddLabel("Gravity [ Loading... ]")
+PositionYou = Tab:AddLabel("Position In Your [ Loading... ]")
+
+local AutoUpdateStats
+Tab:AddToggle({
+    Name = "Auto Set Local Stats",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoSetLocalStats = Value
+        if Value then
+            AutoUpdateStats = game:GetService("RunService").RenderStepped:Connect(UpdateStats)
+        else
+            if AutoUpdateStats then AutoUpdateStats:Disconnect() end
+        end
+    end
+})
+
+-- Ping Display
+Tab:AddLabel("Current Ping:")
+
+local PingLabel = Tab:AddLabel("Fetching...")
+
+task.spawn(function()
+    while true do
+        local Ping = math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue())
+        PingLabel:Set("Ping: " .. Ping .. "ms")
+        task.wait(1)
+    end
+end)
+
+-- Logs Storage
+local Logs = {"Click to view logs..."}
+
+-- Button to Show Logs
+local LogsButton = Tab:AddButton({
+    Name = "View Logs",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "Logs Opened",
+            Content = "Showing logs below...",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+-- Logs Display
+local LogsParagraph = Tab:AddParagraph("Logs", table.concat(Logs, "\n"))
+
+-- Capture Game Logs
+game:GetService("LogService").MessageOut:Connect(function(message, messageType)
+    local prefix = "[INFO] "
+    if messageType == Enum.MessageType.MessageWarning then
+        prefix = "[WARNING] "
+    elseif messageType == Enum.MessageType.MessageError then
+        prefix = "[ERROR] "
+    end
+    
+    local logMessage = prefix .. message
+    table.insert(Logs, logMessage)
+    if #Logs > 50 then -- Keep only last 50 logs
+        table.remove(Logs, 1)
+    end
+    
+    -- Update Logs Display
+    LogsParagraph:Set(table.concat(Logs, "\n"))
+end)
+
+OrionLib:Init()
+
+-- Script Tab Content
+Tab1:AddButton({
+    Name = "Execute Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/your_script_url_here"))()
+    end
+})
+
+Tab1:AddTextbox({
+    Name = "Enter Script URL",
+    Default = "https://raw.githubusercontent.com/",
+    TextDisappear = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet(Value))()
+    end
+})
+
+-- Various script execution buttons
+Tab1:AddButton({
+Name = "Synapse X [ PE Delta ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/delta-hydro/secret-host-haha/main/syn_ui_new.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Codex [ PE ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Codex.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Kiwi [ PE ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Kiwi-Ui.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Krypton [ PE ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Krypton.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Krnl [ PE ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Knrl.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Animation [ PE ]",
+Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Joystickplays/AFEM/refs/heads/main/AFEM.lua'))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Arceus x [ PE ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Arceus_X_V3.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Execute | Ui Library [ PE ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Execute%20%7C%20UI%20Library.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Kill Player [ PE ]",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Kill%20player"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Keyboard",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Rejoin Gui",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Rejoin.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Inf yield",
+Callback = function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Hitbox",
+Callback = function()
+loadstring(game:HttpGet(("https://gist.githubusercontent.com/stellar-4242/430ef3087d8d87eb306ca03e728ffbb8/raw/798429dd908b1f4471a1fa569ff62c5e5a93ec61/SLAP.LUA")))()
+end    
+})
+
+Tab1:AddButton({
+Name = "CherryUi's SB GUI",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RandomScriptr3/gggggggg/main/lolez.txt", true))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Position Gui",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Position_Gui.lua", true))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Fe Fly V3",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Fly_V3.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "MoonUI v10",
+Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/IlikeyocutgHAH12/MoonUI-v10-/main/MoonUI%20v10'))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Btool Cute",
+Callback = function()
+loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
+end    
+})
+
+Tab1:AddButton({
+Name = "Dex V2",
+Callback = function()
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer.txt"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Dex V3",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
+end    
+})
+
+Tab1:AddButton({
+Name = "TP gui player",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/TP_Player.lua"))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Turies Spy",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/Reamsrpy.lua", true))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Simple Spy",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Giangplay/Script/main/RemoteSpy-V2.lua", true))()
+end    
+})
+
+Tab1:AddButton({
+Name = "Hydroxide",
+Callback = function()
+local owner = "Upbolt"
+local branch = "revision"
+local function webImport(file)
+return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format(owner, branch, file)), file .. '.lua')()
+end
+webImport("init")
+webImport("ui/main")
+end    
+})
+
+--Anti Tab
+_G.AntiKnock = false
+_G.AntiFling = false
+_G.AntiVoid = false
+_G.AntiAFK = false
+_G.AntiKick = false
+_G.AntiAdmin = false
+_G.AntiRagdoll = false
+_G.AllAnti = false
+
+local detectedPlayers = {}
+local flingDetectionCon
+local antiFlingLastPos = Vector3.zero
+
+-- 🛡️ Anti-Knockback
+Tab2:AddToggle({
+    Name = "Anti-Knockback",
+    Default = false,
+    Callback = function(state)
+        _G.AntiKnock = state
+        if state then
+            runService.Stepped:Connect(function()
+                if player.Character and player.Character.PrimaryPart then
+                    local root = player.Character.PrimaryPart
+                    root.AssemblyLinearVelocity = Vector3.zero
+                end
+            end)
+            OrionLib:MakeNotification({ Name = "Anti-Knockback Activated", Content = "Knockback protection enabled!", Image = "rbxassetid://4483345998", Time = 5 })
+        else
+            OrionLib:MakeNotification({ Name = "Anti-Knockback Deactivated", Content = "Knockback protection disabled.", Image = "rbxassetid://4483345998", Time = 5 })
+        end
+    end
+})
+
+-- 🛑 Anti-Fling
+Tab2:AddToggle({
+    Name = "Anti-Fling",
+    Default = false,
+    Callback = function(state)
+        _G.AntiFling = state
+        if state then
+            OrionLib:MakeNotification({ Name = "Anti-Fling Activated", Content = "Fling protection enabled!", Image = "rbxassetid://4483345998", Time = 5 })
+
+            flingDetectionCon = runService.Heartbeat:Connect(function()
+                for _, pl in ipairs(game:GetService("Players"):GetPlayers()) do
+                    if pl.Character and pl.Character.PrimaryPart then
+                        local root = pl.Character.PrimaryPart
+                        if root.AssemblyAngularVelocity.Magnitude > 50 or root.AssemblyLinearVelocity.Magnitude > 100 then
+                            if not detectedPlayers[pl.Name] then
+                                OrionLib:MakeNotification({ Name = "Flinger Detected!", Content = "Player " .. pl.Name .. " might be flinging!", Image = "rbxassetid://4483345998", Time = 5 })
+                                detectedPlayers[pl.Name] = true    
+                            end
+                            for _, p in ipairs(pl.Character:GetDescendants()) do
+                                if p:IsA("BasePart") then
+                                    p.CanCollide = false
+                                    p.AssemblyAngularVelocity = Vector3.zero
+                                    p.AssemblyLinearVelocity = Vector3.zero
+                                    p.CustomPhysicalProperties = PhysicalProperties.new(0,0,0)
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+        else
+            if flingDetectionCon then flingDetectionCon:Disconnect() end
+            detectedPlayers = {}
+            OrionLib:MakeNotification({ Name = "Anti-Fling Deactivated", Content = "Fling protection disabled.", Image = "rbxassetid://4483345998", Time = 5 })
+        end
+    end
+})
+
+-- 🔲 Anti-Void
+Tab2:AddToggle({
+    Name = "Anti-Void",
+    Default = false,
+    Callback = function(state)
+        _G.AntiVoid = state
+        if state then
+            if not workspace:FindFirstChild("VoidPart") then
+                local VoidPart = Instance.new("Part", workspace)
+                VoidPart.Name = "VoidPart"
+                VoidPart.Position = Vector3.new(0, -10, 0)
+                VoidPart.Size = Vector3.new(5000, 1, 5000)
+                VoidPart.Anchored = true
+                VoidPart.Transparency = 1
+                VoidPart.CanCollide = false
+                VoidPart.Material = Enum.Material.ForceField
+            end
+        else
+            if workspace:FindFirstChild("VoidPart") then
+                workspace.VoidPart:Destroy()
+            end
+        end
+    end
+})
+
+-- 💤 Anti-AFK
+Tab2:AddToggle({
+    Name = "Anti-AFK",
+    Default = false,
+    Callback = function(state)
+        _G.AntiAFK = state
+        if state then
+            player.Idled:Connect(function()
+                game:GetService("VirtualUser"):CaptureController()
+                game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+            end)
+        end
+    end
+})
+
+-- 🚷 Anti-Kick
+Tab2:AddToggle({
+    Name = "Anti-Kick",
+    Default = false,
+    Callback = function(state)
+        _G.AntiKick = state
+        if state then
+            local mt = getrawmetatable(game)
+            setreadonly(mt, false)
+            local old = mt.__namecall
+            mt.__namecall = newcclosure(function(...)
+                local args = {...}
+                if getnamecallmethod() == "Kick" then
+                    return nil
+                end
+                return old(...)
+            end)
+        end
+    end
+})
+
+-- 🛃 Anti-Admin Detection
+Tab2:AddToggle({
+    Name = "Anti-Admin",
+    Default = false,
+    Callback = function(state)
+        _G.AntiAdmin = state
+        if state then
+            game:GetService("Players").PlayerAdded:Connect(function(player)
+                if player:IsInGroup(1200769) or player:IsInGroup(30549975) then
+                    game.Players.LocalPlayer:Kick("Admin detected! Leaving to avoid being banned.")
+                end
+            end)
+        end
+    end
+})
+
+-- 🏋️ Anti-Ragdoll
+Tab2:AddToggle({
+    Name = "Anti-Ragdoll",
+    Default = false,
+    Callback = function(state)
+        _G.AntiRagdoll = state
+        if state then
+            runService.Stepped:Connect(function()
+                if player.Character and player.Character:FindFirstChild("Ragdolled") then
+                    player.Character.Ragdolled:Destroy()
+                end
+            end)
+        end
+    end
+})
+
+-- 🔥 Enable All Anti Features
+Tab2:AddToggle({
+    Name = "Enable All Anti",
+    Default = false,
+    Callback = function(state)
+        _G.AllAnti = state
+        _G.AntiFling = state
+        _G.AntiVoid = state
+        _G.AntiAFK = state
+        _G.AntiKick = state
+        _G.AntiAdmin = state
+        _G.AntiRagdoll = state
+
+        -- Manually toggle all protections
+        if state then
+            OrionLib:MakeNotification({ Name = "Success", Content = "All anti-features enabled!", Image = "rbxassetid://7733658504", Time = 5 })
+        else
+            OrionLib:MakeNotification({ Name = "Disabled", Content = "All anti-features disabled!", Image = "rbxassetid://7733658504", Time = 5 })
+        end
+    end
+})
+
+OrionLib:Init()
+
+--Local Features
+Tab5:AddSlider({
+	Name = "WalkSpeed",
+	Min = 20,
+	Max = 1000,
+	Default = 20,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WalkSpeed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+		Walkspeed = Value
+	end    
+})
+
+Tab5:AddTextbox({
+	Name = "WalkSpeed",
+	Default = "UserSpeed",
+	TextDisappear = false,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+		Walkspeed = Value
+	end	  
+})
+
+Tab5:AddToggle({
+	Name = "Walkspeed Set Auto",
+	Default = false,
+	Callback = function(Value)
+		KeepWalkspeed = Value
+		while KeepWalkspeed do
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and game.Players.LocalPlayer.Character.Humanoid.WalkSpeed ~= Walkspeed then
+				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Walkspeed
+			end
+			task.wait()
+		end
+	end    
+})
+
+Tab5:AddSlider({
+	Name = "JumpPower",
+	Min = 50,
+	Max = 1000,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "JumpPower",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+		Jumppower = Value
+	end    
+})
+
+Tab5:AddTextbox({
+	Name = "Jumppower",
+	Default = "UserPower",
+	TextDisappear = false,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+		Jumppower = Value
+	end	  
+})
+
+Tab5:AddToggle({
+	Name = "Jumppower Set Auto",
+	Default = false,
+	Callback = function(Value)
+		KeepJumppower = Value
+		while KeepJumppower do
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and game.Players.LocalPlayer.Character.Humanoid.JumpPower ~= Jumppower then
+				game.Players.LocalPlayer.Character.Humanoid.JumpPower = Jumppower
+			end
+			task.wait()
+		end
+	end    
+})
+
+Tab5:AddSlider({
+	Name = "Hip Height",
+	Min = 0,
+	Max = 100,
+	Default = 0,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Hip Height",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
+		HipHeight = Value
+	end    
+})
+
+Tab5:AddTextbox({
+	Name = "Hip Height",
+	Default = "UserHeight",
+	TextDisappear = false,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
+		HipHeight = Value
+	end	  
+})
+
+Tab5:AddToggle({
+	Name = "Hip Height Set Auto",
+	Default = false,
+	Callback = function(Value)
+		KeepHipHeight = Value
+		while KeepHipHeight do
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and game.Players.LocalPlayer.Character.Humanoid.HipHeight ~= HipHeight then
+				game.Players.LocalPlayer.Character.Humanoid.HipHeight  = HipHeight
+			end
+			task.wait()
+		end
+	end    
+})
+
+Tab5:AddSlider({
+	Name = "Gravity",
+	Min = 0,
+	Max = 600,
+	Default = 196,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Gravity",
+	Callback = function(Value)
+		game.Workspace.Gravity = Value
+		Gravity = Value
+	end    
+})
+
+Tab5:AddToggle({
+	Name = "Gravity Set Auto",
+	Default = false,
+	Callback = function(Value)
+		KeepGravity = Value
+		while KeepGravity do
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and game.Workspace.Gravity ~= nil and game.Workspace.Gravity ~= Gravity then
+				game.Workspace.Gravity = Gravity
+			end
+			task.wait()
+		end
+	end    
+})
+
+-- FOV Slider
+Tab5:AddSlider({
+    Name = "Field of View (FOV)",
+    Min = 30,
+    Max = 120,
+    Default = 70,
+    Color = Color3.fromRGB(255, 0, 0),
+    Increment = 1,
+    ValueName = "FOV",
+    Callback = function(Value)
+        game.Workspace.CurrentCamera.FieldOfView = Value
+    end
+})
+
+-- Subject Change Dropdown
+Tab5:AddDropdown({
+    Name = "Change Camera Subject",
+    Default = "Humanoid",
+    Options = {"Humanoid", "Head", "Torso"},
+    Callback = function(Value)
+        local player = game.Players.LocalPlayer
+        if player.Character then
+            if Value == "Humanoid" then
+                game.Workspace.CurrentCamera.CameraSubject = player.Character:FindFirstChildOfClass("Humanoid")
+            else
+                game.Workspace.CurrentCamera.CameraSubject = player.Character:FindFirstChild(Value)
+            end
+        end
+    end
+})
+
+-- Hitbox Expansion Slider
+Tab5:AddSlider({
+    Name = "Hitbox Size",
+    Min = 2,
+    Max = 20,
+    Default = 5,
+    Color = Color3.fromRGB(255, 0, 0),
+    Increment = 1,
+    ValueName = "Hitbox Size",
+    Callback = function(Value)
+        _G.HitboxSize = Value
+        for _, v in pairs(game.Players:GetChildren()) do
+            if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+                v.Character.HumanoidRootPart.Size = Vector3.new(Value, Value, Value)
+                v.Character.HumanoidRootPart.Transparency = 0.75
+            end
+        end
+    end
+})
+
+-- Hitbox Toggle
+Tab5:AddToggle({
+    Name = "Enable Hitbox Expansion",
+    Default = false,
+    Callback = function(Value)
+        _G.HitboxEnabled = Value
+        while _G.HitboxEnabled do
+            for _, v in pairs(game.Players:GetChildren()) do
+                if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+                    v.Character.HumanoidRootPart.Size = Vector3.new(_G.HitboxSize, _G.HitboxSize, _G.HitboxSize)
+                    v.Character.HumanoidRootPart.Transparency = 0.75
+                end
+            end
+            task.wait()
+        end
+        if not _G.HitboxEnabled then
+            for _, v in pairs(game.Players:GetChildren()) do
+                if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+                    v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
+                    v.Character.HumanoidRootPart.Transparency = 1
+                end
+            end
+        end
+    end
+})
