@@ -136,7 +136,11 @@ function lib:Window(text, preset, closebind)
     DragFrame.BackgroundTransparency = 1.000
     DragFrame.Size = UDim2.new(0, 560, 0, 41)
 
--- Close Button
+-- 🔹 Ensure `Main` and `ui` are defined
+local Main = Main or script.Parent:FindFirstChild("Main") -- Replace with actual UI reference
+local ui = ui or script.Parent -- Adjust as needed
+
+-- 🔹 Close Button
 local CloseButton = Instance.new("TextButton")
 CloseButton.Name = "CloseButton"
 CloseButton.Parent = Main
@@ -149,7 +153,7 @@ CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CloseButton.Font = Enum.Font.GothamBold
 CloseButton.TextSize = 14
 
--- Small Circle Button (Always Visible)
+-- 🔹 Small Circle Button (Always Visible)
 local CircleButton = Instance.new("TextButton")
 CircleButton.Name = "CircleButton"
 CircleButton.Parent = ui
@@ -163,22 +167,24 @@ CircleButton.Font = Enum.Font.GothamBold
 CircleButton.AutoButtonColor = true
 CircleButton.BorderSizePixel = 0
 
--- Make CircleButton Round
+-- 🔹 Make CircleButton Round
 local UICorner = Instance.new("UICorner")
 UICorner.CornerRadius = UDim.new(1, 0) -- Fully rounded
 UICorner.Parent = CircleButton
 
--- Close Button Functionality
+-- 🔹 Close Button Functionality
 CloseButton.MouseButton1Click:Connect(function()
     Main.Visible = false -- Hide main UI
+    CircleButton.Visible = true -- Show circle button
 end)
 
--- Circle Button Functionality (Hover to Reopen UI)
-CircleButton.MouseEnter:Connect(function()
-    Main.Visible = true -- Show UI when hovered
+-- 🔹 Circle Button Functionality (Click to Reopen UI instead of Hover)
+CircleButton.MouseButton1Click:Connect(function()
+    Main.Visible = true -- Show UI when clicked
+    CircleButton.Visible = false -- Hide the circle button
 end)
 
--- Make the Circle Button Movable
+-- 🔹 Make the Circle Button Movable
 local UserInputService = game:GetService("UserInputService")
 local dragging, dragInput, dragStart, startPos
 
@@ -205,10 +211,13 @@ end)
 UserInputService.InputChanged:Connect(function(input)
     if input == dragInput and dragging then
         local delta = input.Position - dragStart
-        CircleButton.Position = UDim2.new(
-            0, startPos.X.Offset + delta.X, -- Keep it within screen bounds
-            0, startPos.Y.Offset + delta.Y
-        )
+
+        -- Keep CircleButton within screen bounds
+        local screenSize = game:GetService("Workspace").CurrentCamera.ViewportSize
+        local newX = math.clamp(startPos.X.Offset + delta.X, 0, screenSize.X - CircleButton.Size.X.Offset)
+        local newY = math.clamp(startPos.Y.Offset + delta.Y, 0, screenSize.Y - CircleButton.Size.Y.Offset)
+
+        CircleButton.Position = UDim2.new(0, newX, 0, newY)
     end
 end)
 
