@@ -136,7 +136,7 @@ function lib:Window(text, preset, closebind)
     DragFrame.BackgroundTransparency = 1.000
     DragFrame.Size = UDim2.new(0, 560, 0, 41)
 
-   -- Close Button
+-- Close Button
 local CloseButton = Instance.new("TextButton")
 CloseButton.Name = "CloseButton"
 CloseButton.Parent = Main
@@ -149,18 +149,17 @@ CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CloseButton.Font = Enum.Font.GothamBold
 CloseButton.TextSize = 14
 
--- Small Circle Button (Hidden Initially)
+-- Small Circle Button (Always Visible)
 local CircleButton = Instance.new("TextButton")
 CircleButton.Name = "CircleButton"
 CircleButton.Parent = ui
-CircleButton.Position = UDim2.new(0.05, 0, 0.1, 0) -- Adjust position as needed
+CircleButton.Position = UDim2.new(0.05, 0, 0.1, 0) -- Adjust position
 CircleButton.Size = UDim2.new(0, 30, 0, 30) -- Small circular size
 CircleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 CircleButton.Text = "🐉"
 CircleButton.TextSize = 18
 CircleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CircleButton.Font = Enum.Font.GothamBold
-CircleButton.Visible = false
 CircleButton.AutoButtonColor = true
 CircleButton.BorderSizePixel = 0
 
@@ -171,40 +170,13 @@ UICorner.Parent = CircleButton
 
 -- Close Button Functionality
 CloseButton.MouseButton1Click:Connect(function()
-    Main.Visible = false
-    CircleButton.Visible = true -- Show small circle button
+    Main.Visible = false -- Hide main UI
 end)
 
--- Circle Button Functionality (Reopen UI)
-CircleButton.MouseButton1Click:Connect(function()
-    Main.Visible = true
-    CircleButton.Visible = false -- Hide itself after reopening UI
+-- Circle Button Functionality (Hover to Reopen UI)
+CircleButton.MouseEnter:Connect(function()
+    Main.Visible = true -- Show UI when hovered
 end)
-
--- Minimize Button
-local MinimizeButton = Instance.new("TextButton")
-MinimizeButton.Name = "MinimizeButton"
-MinimizeButton.Parent = Main
-MinimizeButton.AnchorPoint = Vector2.new(1, 0)
-MinimizeButton.Position = UDim2.new(1, -35, 0, 5)
-MinimizeButton.Size = UDim2.new(0, 20, 0, 20)
-MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 165, 0)
-MinimizeButton.Text = "-"
-MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MinimizeButton.Font = Enum.Font.GothamBold
-MinimizeButton.TextSize = 14
-
--- Minimize Logic
-local minimized = false
-MinimizeButton.MouseButton1Click:Connect(function()
-    minimized = not minimized
-    if minimized then
-        Main:TweenSize(UDim2.new(0, 560, 0, 41), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true) -- Shrink
-    else
-        Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true) -- Restore
-    end
-end)
-
 
     Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 
