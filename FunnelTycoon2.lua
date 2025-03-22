@@ -9,6 +9,172 @@ or crack the script for any reason is not allowed.
 Copyright © 2025 DP Hub - Script. All Rights Reserved.
 
 ]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+--[[
+
+DP HUB  POWERED SCRIPTS
+
+This made by DP (DEXAR /DEVS PARADISE)  HUB Team 
+Modification of the script, including attempting to bypass
+or crack the script for any reason is not allowed.
+
+Copyright © 2025 DP Hub - Script. All Rights Reserved.
+
+]]--
+
 local A,B=game:GetService('Players').LocalPlayer,Instance.new('ScreenGui')B.Parent=A:WaitForChild('PlayerGui')B.Name='DPHubGUI'
 local C=Instance.new('Frame')C.Size=UDim2.new(0,250,0,350)C.Position=UDim2.new(0.5,-125,0.3,0)C.BackgroundColor3=Color3.fromRGB(30,30,30)C.BorderSizePixel=2
 C.Draggable=true C.Active=true C.Parent=B
