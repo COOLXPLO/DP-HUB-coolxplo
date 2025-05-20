@@ -3,20 +3,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DP Hub – Top Roblox Scripts</title>
-
   <style>
-    header h1 {
-      display: none; /* Hides the top heading */
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
-    
 
+    body {
       background: #000;
       color: #fff;
       overflow-x: hidden;
