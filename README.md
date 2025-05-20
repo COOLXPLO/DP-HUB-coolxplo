@@ -116,7 +116,7 @@
 <canvas id="bg"></canvas>
 
 <header>
-  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Dragon">
+  <img src="https://png.pngtree.com/png-vector/20250114/ourlarge/pngtree-black-dragon-png-image_15178011.png" alt="Dragon">
   <h1>DP Hub</h1>
 </header>
 
