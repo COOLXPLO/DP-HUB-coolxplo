@@ -1,381 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Lear Hub - Script</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Custom Google font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <style>
-    body {
-        color: white;
-        font-family: "Poppins", sans-serif;
-        margin: 0;
-        background-color: #1e1e1e;
-    }
-
-    /* Script Kartları için Grid Yapısı */
-    .script-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Kartlar yan yana, minimum 300px genişlik */
-        gap: 20px; /* Kartlar arası boşluk */
-        padding: 20px; /* Container padding'i */
-    }
-
-    .script-card {
-        background: rgba(0, 0, 0, 0.8);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.3);
-        transition: 0.3s ease-in-out;
-        display: flex;
-        flex-direction: column; /* İçeriği dikeyde hizala */
-    }
-
-    .script-card h3 {
-        margin-top: 0;
-        font-size: 18px;
-    }
-
-    .script-card p {
-        font-size: 14px;
-        margin: 5px 0;
-    }
-
-    .script-card pre {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 10px;
-        border-radius: 5px;
-        overflow-x: auto;
-        font-size: 12px;
-        flex-grow: 1; /* Kod bloğunu esnet, kartlar eşit yükseklikte olsun */
-    }
-
-    /* Butonlar */
-    .copy-btn, .delete-btn {
-        background: linear-gradient(45deg, black, red);
-        border: none;
-        color: white;
-        font-weight: bold;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-        margin: 10px 5px;
-    }
-
-    .copy-btn:hover, .delete-btn:hover {
-        background: linear-gradient(45deg, red, black);
-        transform: scale(1.05);
-    }
-
-    .delete-btn {
-        background: linear-gradient(45deg, black, darkred);
-    }
-
-    .delete-btn:hover {
-        background: linear-gradient(45deg, darkred, black);
-    }
-
-    .search-bar {
-    width: 80%; /* Genişliği ayarla */
-    max-width: 500px; /* Maksimum genişlik */
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid white;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-    background-color: #222;
-    color: white;
-    margin-top: 80px;
-    margin-left: auto; /* Otomatik sol boşluk */
-    margin-right: auto; /* Otomatik sağ boşluk */
-    display: block; /* Blok element olarak ayarla */
-}
-
-/* Kırmızı-Siyah Geçişli Saydam Arka Plan */
-    .custom-dropdown {
-        background: linear-gradient(135deg, rgba(255, 0, 0, 0.85), rgba(0, 0, 0, 0.9)) !important; /* Gradient kırmızı-siyah */
-        border: 2px solid white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-    }
-
-    .custom-dropdown .dropdown-item {
-        color: white !important; /* Yazılar beyaz */
-        font-weight: bold;
-        position: relative;
-        transition: all 0.3s ease-in-out;
-    }
-
-    /* Yazı Hover Efekti (Sağa Kayma + Parlama) */
-    .custom-dropdown .dropdown-item:hover {
-        background: rgba(255, 255, 255, 0.2) !important;
-        transform: translateX(8px);
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
-    }
-
-    /* Ayracı Beyaz ve Hafif Saydam Yap */
-    .custom-dropdown .dropdown-divider {
-        border-color: rgba(255, 255, 255, 0.6) !important;
-    }
-
-    /* Açılırken Küçük Bir Animasyon */
-    .custom-dropdown.show {
-        transform: scale(1.05);
-        opacity: 1;
-    }
-</style>
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echelon | Best Scripts</title>
+    <meta name="description" content="Echelon - Premium game scripts and utilities">
+    <meta property="og:title" content="Echelon | Best Scripts">
+    <meta property="og:image" content="/img/preview.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
+
 <body>
-    <!-- Video Arkaplan -->
-    <video autoplay muted loop id="background-video">
-        <source src="https://motionbgs.com/media/5582/flowing-dots.960x540.mp4" type="video/mp4">
-        Tarayıcınız videoyu desteklemiyor.
-    </video>
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">Echelon</div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg py-3"> 
-        <div class="container px-5">
-            <a class="navbar-brand" href="index.php"><span class="fw-bolder text-primary">Lear Hub</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="scripts.php">Scripts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projects.php">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div class="glow-effect"></div>
 
-                                            <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                                    </ul>
-            </div>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="logo-text">Echelon<span class="accent"></span></span>
+            <div class="logo-glow"></div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="https://discord.gg/5xZXaSr3Nq" class="nav-link discord-btn" target="_blank">
+                <svg class="discord-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                    <path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/>
+                </svg>
+                Discord
+            </a>
+        </div>
+        <div class="menu-toggle">
+            <div class="hamburger"></div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="search-container">
-            <input type="text" class="search-bar" id="searchInput" placeholder="Search for a script...">
-        </div>
-
-        <div class="add-new">
-            <a href="add_script.php" style="color: red; text-decoration: none; display: block; text-align: center; width: 100%;" class="nihatpro2">Add New Script</a>
-        </div>
-
-                    <div style="background: red; color: white; padding: 10px; text-align: center;">
-                You must be logged in to add a script. <a href="login.php" style="color: yellow;">Login</a>
+    <section class="hero">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Echelon">Echelon</h1>
+            <div class="typewriter-container">
+                <div class="typewriter" id="typewriter"></div>
             </div>
-        
-       <div class="script-list">
-                    <div class="script-card" data-title="sadasd">
-                <h3>sadasd</h3>
-                <p>By: sadsadsdasd</p>
-                <p>asdasdasdas</p>
-                <pre>dasdsdadsad</pre>
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="dasdsdadsad">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="psalm.tech (dh games">
-                <h3>Psalm.tech (dh games</h3>
-                <p>By: SadGuy1to10</p>
-                <p>U can choose and it&#039;s gui so u can pick lock or button u can adjust some sets  it&#039;s basically OP (OverPower)</p>
-                <pre>loadstring(game:HttpGet(&quot;https://gist.githubusercontent.com/CongoOhioDog/cc34beefcf58fae8a4b9f8fc946cbc6f/raw/34e758b5c6d764fca98833073ac491dad2d34537/gistfile1.txt&quot;))()</pre>
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://gist.githubusercontent.com/CongoOhioDog/cc34beefcf58fae8a4b9f8fc946cbc6f/raw/34e758b5c6d764fca98833073ac491dad2d34537/gistfile1.txt&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="lear animations hub">
-                <h3>Lear Animations Hub</h3>
-                <p>By: Lear</p>
-                <p>There are a lot of animations and emotes, good games</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/Lear/refs/heads/main/LearAnimation&quot;))()</pre>
-                                    <img src="uploads/67def17be0e51.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/Lear/refs/heads/main/LearAnimation&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="1humano hub">
-                <h3>1Humano Hub</h3>
-                <p>By: glee</p>
-                <p>wdwaww</p>
-                <pre>loadstring(game:HttpGet(&quot;https://pastebin.com/raw/fz7kWzsw&quot;))()</pre>
-                                    <img src="uploads/1742659637_Screenshot 2025-03-20 145924.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://pastebin.com/raw/fz7kWzsw&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="wisi&#039;i universal project.">
-                <h3>wisI&#039;i Universal Project.</h3>
-                <p>By: Lear</p>
-                <p>support:// Xeno/Solara/Luna/ AndMore
-
--- Discord // Join to share various scripts! ????
-
-https://discord.gg/XSUduWp52q</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/wisl884/wisl-i-Universal-Project1/refs/heads/main/Wisl&#039;i%20Universal%20Project%20new%20UI.lua&quot;, true))()</pre>
-                                    <img src="uploads/67ded5691dea5.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/wisl884/wisl-i-Universal-Project1/refs/heads/main/Wisl&#039;i%20Universal%20Project%20new%20UI.lua&quot;, true))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="hug scirpt">
-                <h3>Hug Scirpt</h3>
-                <p>By: LearHub</p>
-                <p>Hug</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/JSFKGBASDJKHIOAFHDGHIUODSGBJKLFGDKSB/fe/refs/heads/main/FEHUGG&quot;))()</pre>
-                                    <img src="uploads/67deac17014d6.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/JSFKGBASDJKHIOAFHDGHIUODSGBJKLFGDKSB/fe/refs/heads/main/FEHUGG&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="roblox fe vehicle fly v3">
-                <h3>Roblox fe vehicle fly v3</h3>
-                <p>By: LearHub</p>
-                <p>Fe Fly</p>
-                <pre>loadstring(game:HttpGet(&#039;https://raw.githubusercontent.com/ScpGuest666/Random-Roblox-script/refs/heads/main/Roblox%20Fe%20Vehicle%20Fly%20GUI%20script&#039;))()</pre>
-                                    <img src="uploads/67de9ee04ba4e.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&#039;https://raw.githubusercontent.com/ScpGuest666/Random-Roblox-script/refs/heads/main/Roblox%20Fe%20Vehicle%20Fly%20GUI%20script&#039;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="tower hub">
-                <h3>Tower Hub</h3>
-                <p>By: LearHub</p>
-                <p>Supports all tower games</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/maximilianscho/towerhub/refs/heads/main/source.lua&quot;,true))()</pre>
-                                    <img src="uploads/67de9de7879da.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/maximilianscho/towerhub/refs/heads/main/source.lua&quot;,true))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="lear hub">
-                <h3>Lear Hub</h3>
-                <p>By: Lear</p>
-                <p>Basic Menu
-They are very functions
-Basic Key System</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/Lear/refs/heads/main/Lear%20Hub&quot;))()</pre>
-                                    <img src="uploads/67de9572ca0a8.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/Lear/refs/heads/main/Lear%20Hub&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="universal aimbot">
-                <h3>Universal Aimbot</h3>
-                <p>By: Lear</p>
-                <p>Aimbot And Esp</p>
-                <pre>loadstring(game:HttpGet(&#039;https://pastebin.com/raw/5rwtLBN1&#039;))()</pre>
-                                    <img src="uploads/67de9509ea19c.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&#039;https://pastebin.com/raw/5rwtLBN1&#039;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="[tÜrk] sohbet oyunu">
-                <h3>[TÜRK] Sohbet Oyunu</h3>
-                <p>By: Lear</p>
-                <p>Money Scirpt</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/turk&quot;))()</pre>
-                                    <img src="uploads/67de946a4dfa6.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/turk&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="red light green light tower????????">
-                <h3>Red Light Green Light Tower????????</h3>
-                <p>By: Lear</p>
-                <p>End The Game</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/squid&quot;))()</pre>
-                                    <img src="uploads/67de9422b8e61.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/squid&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="walk 1000 studs for money">
-                <h3>Walk 1000 Studs For Money</h3>
-                <p>By: Lear</p>
-                <p>End Game</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/wall&quot;))()</pre>
-                                    <img src="uploads/67de93c9632aa.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/wall&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="the $1,000,000 glass bridge">
-                <h3>The $1,000,000 Glass Bridge</h3>
-                <p>By: Lear</p>
-                <p>Inf Money</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/Infmone&quot;))()</pre>
-                                    <img src="uploads/67de938d9fc88.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/Infmone&quot;))()">Copy</button>
-                </div>
-                            </div>
-                    <div class="script-card" data-title="pick right path to rich!">
-                <h3>Pick Right Path to RICH!</h3>
-                <p>By: Lear</p>
-                <p>Inf Money</p>
-                <pre>loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/Infmone&quot;))()</pre>
-                                    <img src="uploads/67de9305077f8.png" alt="Script Image" class="script-image">
-                    
-                                <div class="copy-container">
-                    <button class="copy-btn" data-script="loadstring(game:HttpGet(&quot;https://raw.githubusercontent.com/Emircxy/scirpt/refs/heads/main/Infmone&quot;))()">Copy</button>
-                </div>
-                            </div>
+            <div class="hero-description">
+                <p class="fade-in-text">Join <strong>me</strong> to access the <strong>scripts</strong></p>
             </div>
+            <a href="projects.html" class="cta-button hero-cta">
+                <span class="btn-text">Get Started</span>
+                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </section>
+    
 
-    <script>
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const scriptCode = this.getAttribute('data-script');
-                if (scriptCode) {
-                    navigator.clipboard.writeText(scriptCode).then(() => {
-                        alert("Script copied!");
-                    }).catch((error) => {
-                        console.error("Kopyalama işlemi başarısız oldu:", error);
-                    });
-                }
-            });
-        });
+<iframe style="border-radius:12px; width:60%; height:250px; display:block; margin:0 auto;" 
+    src="https://open.spotify.com/embed/track/00otCx9DiOkISQmdA0lEtQ?utm_source=generator&theme=0" 
+    frameBorder="0" allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+</iframe>
 
-        document.getElementById("searchInput").addEventListener("input", function() {
-            let searchValue = this.value.toLowerCase();
-            document.querySelectorAll(".script-card").forEach(script => {
-                script.style.display = script.getAttribute("data-title").includes(searchValue) ? "block" : "none";
-            });
-        });
-    </script>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+
+    <section id="testimonials" class="testimonials reveal-section">
+        <div class="section-header">
+            <h2>Latest <span class="accent-text">Youtube</span> Video</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="testimonial-carousel">
+            <div class="testimonial-card active">
+                <div class="testimonial-quote">Don't forget to watch our new video</div>
+                <div class="testimonial-author">By Lear</div>
+                <div class="testimonial-rating">
+                    <iframe 
+                        width="400" 
+                        height="225" 
+                        src="https://www.youtube.com/embed/08uF-4TWJrc?si=FoMVGQbJA9NZ_qH2" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="display: block; margin: 0 auto; border-radius: 10px;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <span class="carousel-dot active"></span>
+        </div>
+    </section>
+
+    
+
+    <section id="features" class="features-section reveal-section">
+        <div class="section-header">
+            <h2>Advanced <span class="accent-text">Features</span></h2>
+            <div class="underline"></div>
+        </div>
+        <div class="features-container">
+            <div class="feature-card reveal-element">
+                <div class="feature-icon-container">
+                    <i class="fa-solid fa-scroll"></i>
+                </div>
+                <h3>Lots of scripts</h3>
+                <p>Where many scripts are collected.</p>
+            </div>
+            <div class="feature-card reveal-element">
+                <div class="feature-icon-container">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Safe</h3>
+                <p>Safe scripts and free.</p>
+            </div>
+            <div class="feature-card reveal-element">
+                <a href="" target="_blank">
+                    <div class="feature-icon-container">
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+                    <h3>Support</h3>
+                    <p>Open a Discord ticket and let us know your concerns.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section reveal-section">
+        <div class="cta-content">
+            <h2>Do you want to see the <span class="accent-text">scripts?</span></h2>
+            <a href="projects.html" class="cta-button large">
+                <span class="btn-text">Get Started Today</span>
+                <span class="btn-icon"><i class="fas fa-magic"></i></span>
+            </a>
+        </div>
+        <div class="cta-backdrop"></div>
+    </div>
+
+    <div class="floating-cta">
+        <a href="projects.html" class="cta-button">Projects</a>
+    </div>
+
+    <footer class="echelon-footer">
+        <div class="footer-title">Echelon</div>
+        <div class="footer-links">
+            <a href="terms.html" class="footer-link">Terms</a>
+            <a href="privacy.html" class="footer-link">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="/js/home.js"></script>
 </body>
 </html>
