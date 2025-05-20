@@ -116,7 +116,7 @@
 <canvas id="bg"></canvas>
 
 <header>
-  <img src="https://png.pngtree.com/png-vector/20250114/ourlarge/pngtree-black-dragon-png-image_15178011.png" alt="Dragon">
+  <img src="https://yt3.googleusercontent.com/VZFsH87J_cdIIAUJgNQEj0SYUSCu9xYOwAvFj73Sbrr9u6914UXUHEBnLhdOPMbDNQWuJzG3Omc=s900-c-k-c0x00ffffff-no-rj" alt="Dragon">
   <h1>DP Hub</h1>
 </header>
 
