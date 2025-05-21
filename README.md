@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -94,8 +95,9 @@
       z-index: 1;
       padding: 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
+      align-items: start;
     }
 
     .card {
@@ -105,6 +107,9 @@
       border-radius: 0.5rem;
       padding: 1rem;
       transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card:hover {
@@ -169,24 +174,12 @@
 </nav>
 
 <div class="container" id="home">
-  <!-- Top 15 Script Cards -->
   <script>
     const scripts = [
       { title: "Blade Ball Combat AI", desc: "Auto parry, dash, fake detect", code: `loadstring(game:HttpGet('https://pastebin.com/raw/BladeAI'))()` },
       { title: "Arsenal ESP", desc: "Full wallhack, tracers, team check", code: `loadstring(game:HttpGet('https://pastebin.com/raw/ESPCode'))()` },
       { title: "Fly / Noclip", desc: "Toggle fly + noclip anywhere", code: `loadstring(game:HttpGet('https://pastebin.com/raw/FlyCode'))()` },
       { title: "Speed Boost", desc: "Boost walk/run speed", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Speed'))()` },
-      { title: "Teleport GUI", desc: "Click-to-teleport around map", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Teleport'))()` },
-      { title: "ESP + Aimbot", desc: "Combo vision + auto aim", code: `loadstring(game:HttpGet('https://pastebin.com/raw/AimbotESP'))()` },
-      { title: "Anti-AFK", desc: "Prevent AFK kick forever", code: `loadstring(game:HttpGet('https://pastebin.com/raw/AntiAFK'))()` },
-      { title: "Chat Spammer", desc: "Spam custom messages", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Spammer'))()` },
-      { title: "Kill All Script", desc: "One-tap kill everyone", code: `loadstring(game:HttpGet('https://pastebin.com/raw/KillAll'))()` },
-      { title: "Auto Farm GUI", desc: "Auto farm + level up", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Farm'))()` },
-      { title: "X-Ray Vision", desc: "See through walls", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Xray'))()` },
-      { title: "Invisible Character", desc: "Turn invisible fully", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Invis'))()` },
-      { title: "Item Giver", desc: "Spawn items into inventory", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Giver'))()` },
-      { title: "Knife Ability Script", desc: "Use all abilities in Knife Game", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Knife'))()` },
-      { title: "OP GUI Hub", desc: "All-in-one GUI for exploits", code: `loadstring(game:HttpGet('https://pastebin.com/raw/OPGUI'))()` },
     ];
 
     document.write(
@@ -204,13 +197,11 @@
 <section id="about" class="section" style="display: none;">
   <h2 style="color: red;">About</h2>
   <p><strong>Made by:</strong> Plo_mex and IamUnknown77</p>
-
   <h3>Introduction</h3>
   <p>DP Hub – The Ultimate Roblox Scripting Hub</p>
   <p>
     Welcome to DP Hub, the next-generation scripting hub designed for Roblox enthusiasts who love customization, efficiency, and powerful scripts. Created by Plo_mex and iamunknown77, DP Hub brings you a seamless experience with high-quality scripts that work on top executors like Dex, Delta, and Vega X.
   </p>
-
   <h3>Why Choose DP Hub?</h3>
   <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
     <li>✅ Powerful & Optimized Scripts – Enjoy well-coded scripts designed for smooth performance.</li>
@@ -219,7 +210,6 @@
     <li>✅ Regular Updates – Stay ahead with frequently updated scripts.</li>
     <li>✅ Free & Reliable – No unnecessary paywalls, just quality scripts for everyone.</li>
   </ul>
-
   <p>Whether you're looking for automation, customization, or simply fun enhancements in your favorite games, DP Hub has got you covered! 🚀</p>
 </section>
 
@@ -264,7 +254,6 @@
   });
 </script>
 
-<!-- Particle Background Script -->
 <script>
   const canvas = document.getElementById("bg");
   const ctx = canvas.getContext("2d");
