@@ -172,7 +172,7 @@
   <!-- Top 15 Script Cards -->
   <script>
     const scripts = [
-      { title: "Blox Fruits", desc: "Auto Chest Farm", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
+      { title: "Teleport GUI", desc: "Click-to-teleport around map", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Teleport'))()` },
       { title: "Universal Infinite HP", desc: "Full Protection in some games", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/antiknock.lua'))()` },
       { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
       { title: "Driving Empire", desc: "Auto Farm, Car Fly", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Speed'))()` },
