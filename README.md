@@ -121,6 +121,12 @@
   </a>
 </header>
 
+<!-- Navigation Bar (after header) -->
+<nav class="nav-bar">
+  <a href="#home" class="active-tab">Home</a>
+  <a href="#about">About</a>
+</nav>
+
 <div class="container">
   <!-- Top 15 Script Cards -->
   <script>
