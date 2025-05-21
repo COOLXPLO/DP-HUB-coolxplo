@@ -47,6 +47,48 @@
       font-weight: bold;
     }
 
+    .discord-icon {
+      margin-left: auto;
+    }
+
+    .discord-icon img {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 0 10px #7289da);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .discord-icon img:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 15px #7289da);
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      background: #111;
+      padding: 0.5rem;
+      gap: 2rem;
+      border-bottom: 1px solid red;
+    }
+
+    .nav-bar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-bar a:hover,
+    .nav-bar .active-tab {
+      color: red;
+    }
+
+    .section {
+      padding: 2rem;
+      text-align: center;
+    }
+
     .container {
       position: relative;
       z-index: 1;
@@ -116,12 +158,17 @@
 <header>
   <img src="https://yt3.googleusercontent.com/VZFsH87J_cdIIAUJgNQEj0SYUSCu9xYOwAvFj73Sbrr9u6914UXUHEBnLhdOPMbDNQWuJzG3Omc=s900-c-k-c0x00ffffff-no-rj" alt="Dragon">
   <h1>DP Hub</h1>
-   <a href="https://discord.gg/cVX9QpPkYE" target="_blank" class="discord-icon">
+  <a href="https://discord.gg/cVX9QpPkYE" target="_blank" class="discord-icon">
     <img src="https://i.pinimg.com/1200x/c1/62/5d/c1625d28e215bde2df23e15d3f950cfe.jpg" alt="Discord" />
   </a>
 </header>
 
-<div class="container">
+<nav class="nav-bar">
+  <a href="#home" class="active-tab">Home</a>
+  <a href="#about">About</a>
+</nav>
+
+<div class="container" id="home">
   <!-- Top 15 Script Cards -->
   <script>
     const scripts = [
@@ -154,6 +201,28 @@
   </script>
 </div>
 
+<section id="about" class="section" style="display: none;">
+  <h2 style="color: red;">About</h2>
+  <p><strong>Made by:</strong> Plo_mex and IamUnknown77</p>
+
+  <h3>Introduction</h3>
+  <p>DP Hub – The Ultimate Roblox Scripting Hub</p>
+  <p>
+    Welcome to DP Hub, the next-generation scripting hub designed for Roblox enthusiasts who love customization, efficiency, and powerful scripts. Created by Plo_mex and iamunknown77, DP Hub brings you a seamless experience with high-quality scripts that work on top executors like Dex, Delta, and Vega X.
+  </p>
+
+  <h3>Why Choose DP Hub?</h3>
+  <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <li>✅ Powerful & Optimized Scripts – Enjoy well-coded scripts designed for smooth performance.</li>
+    <li>✅ Wide Executor Compatibility – Works with all good executors, ensuring a hassle-free experience.</li>
+    <li>✅ User-Friendly Interface – Designed for both beginners and experienced scripters.</li>
+    <li>✅ Regular Updates – Stay ahead with frequently updated scripts.</li>
+    <li>✅ Free & Reliable – No unnecessary paywalls, just quality scripts for everyone.</li>
+  </ul>
+
+  <p>Whether you're looking for automation, customization, or simply fun enhancements in your favorite games, DP Hub has got you covered! 🚀</p>
+</section>
+
 <footer>
   &copy; 2025 DP Hub. All rights reserved.
 </footer>
@@ -169,6 +238,30 @@
     box.style.display = "none";
     alert("✅ Script copied!");
   }
+</script>
+
+<script>
+  const tabs = document.querySelectorAll('.nav-bar a');
+  const aboutSection = document.getElementById('about');
+  const homeSection = document.getElementById('home');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      const target = tab.getAttribute('href').substring(1);
+
+      if (target === 'about') {
+        aboutSection.style.display = 'block';
+        homeSection.style.display = 'none';
+      } else {
+        aboutSection.style.display = 'none';
+        homeSection.style.display = 'grid';
+      }
+
+      tabs.forEach(t => t.classList.remove('active-tab'));
+      tab.classList.add('active-tab');
+    });
+  });
 </script>
 
 <!-- Particle Background Script -->
