@@ -172,10 +172,10 @@
   <!-- Top 15 Script Cards -->
   <script>
     const scripts = [
-      { title: "Blade Ball Combat AI", desc: "Auto parry, dash, fake detect", code: `loadstring(game:HttpGet('https://pastebin.com/raw/BladeAI'))()` },
-      { title: "Arsenal ESP", desc: "Full wallhack, tracers, team check", code: `loadstring(game:HttpGet('https://pastebin.com/raw/ESPCode'))()` },
-      { title: "Fly / Noclip", desc: "Toggle fly + noclip anywhere", code: `loadstring(game:HttpGet('https://pastebin.com/raw/FlyCode'))()` },
-      { title: "Speed Boost", desc: "Boost walk/run speed", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Speed'))()` },
+      { title: "Blox Fruits", desc: "Auto Chest Farm", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
+      { title: "Universal Infinite HP", desc: "Full Protection in some games", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/antiknock.lua'))()` },
+      { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
+      { title: "Driving Empire", desc: "Auto Farm, Car Fly", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Speed'))()` },
       { title: "Teleport GUI", desc: "Click-to-teleport around map", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Teleport'))()` },
       { title: "ESP + Aimbot", desc: "Combo vision + auto aim", code: `loadstring(game:HttpGet('https://pastebin.com/raw/AimbotESP'))()` },
       { title: "Anti-AFK", desc: "Prevent AFK kick forever", code: `loadstring(game:HttpGet('https://pastebin.com/raw/AntiAFK'))()` },
