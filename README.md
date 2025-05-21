@@ -77,6 +77,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     .nav-bar a:hover,
@@ -90,8 +91,6 @@
     }
 
     .container {
-      position: relative;
-      z-index: 1;
       padding: 2rem;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -142,8 +141,6 @@
       padding: 2rem;
       font-size: 0.875rem;
       color: #777;
-      z-index: 1;
-      position: relative;
     }
 
     textarea {
@@ -164,42 +161,12 @@
 </header>
 
 <nav class="nav-bar">
-  <a href="#home" class="active-tab">Home</a>
-  <a href="#about">About</a>
+  <a class="active-tab" onclick="showTab('home')">Home</a>
+  <a onclick="showTab('about')">About</a>
 </nav>
 
-<div class="container" id="home">
-  <!-- Top 15 Script Cards -->
-  <script>
-    const scripts = [
-      { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
-      { title: "Universal Infinite HP", desc: "Full Protection in some games", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/antiknock.lua'))()` },
-      { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
-      { title: "Driving Empire", desc: "Auto Farm, Car Fly", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Driving%20Empire.lua", true))()` },
-      { title: "Funnel Tycoon 2", desc: "Inf Money", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/FunnelTycoon2.lua", true))()` },
-      { title: "The $1,000,000 Glass Bridge", desc: "Inf Money", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/TheGlassBridge.lua", true))()` },
-      { title: "The Storage", desc: "Inf Money, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/CoolXplo/DP-HUB-coolxplo/main/The_Storage.lua"))()` },
-      { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
-      { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` },
-      { title: "Starving Artists", desc: "Auto Draw Arts", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/starving%20artists.lua'))()` },
-      { title: "Break in story", desc: "Role changer, Tool Giver", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/BreakInStory.lua"))()` },
-      { title: "Eat Blobs Simulator", desc: "Turn Inf Size", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EatBlobsSimulator.lua'))()` },
-      { title: "Dig to Earth's CORE", desc: "Auto Wins", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Dig%20to%20Earth's%20CORE.lua"))()` },
-      { title: "Westbound", desc: "Auto Bonds", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/westbond.lua'))()` },
-      { title: "Blade Ball", desc: "Auto Parry, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/bladeball.lua"))()` },
-      { title: "Graphic Controller", desc: "", code: `loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Graphic%20controller.lua"))()` },
-    ];
-
-    document.write(
-      scripts.map(script => `
-        <div class="card">
-          <h3>${script.title}</h3>
-          <p>${script.desc}</p>
-          <button onclick="copyScript(\`${script.code}\`)">Copy Script</button>
-        </div>
-      `).join("")
-    );
-  </script>
+<div id="home" class="container">
+  <!-- Script cards will be generated here -->
 </div>
 
 <section id="about" class="section" style="display: none;">
@@ -215,13 +182,13 @@
   <h3>Why Choose DP Hub?</h3>
   <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
     <li>✅ Powerful & Optimized Scripts – Enjoy well-coded scripts designed for smooth performance.</li>
-    <li>✅ Wide Executor Compatibility – Works with all good executors, ensuring a hassle-free experience.</li>
-    <li>✅ User-Friendly Interface – Designed for both beginners and experienced scripters.</li>
-    <li>✅ Regular Updates – Stay ahead with frequently updated scripts.</li>
-    <li>✅ Free & Reliable – No unnecessary paywalls, just quality scripts for everyone.</li>
+    <li>✅ Wide Executor Compatibility – Works with all good executors.</li>
+    <li>✅ User-Friendly Interface – Great for both beginners and pros.</li>
+    <li>✅ Regular Updates – Stay ahead of the curve.</li>
+    <li>✅ Free & Reliable – No paywalls, no B.S.</li>
   </ul>
 
-  <p>Whether you're looking for automation, customization, or simply fun enhancements in your favorite games, DP Hub has got you covered! 🚀</p>
+  <p>Whether you're looking for automation, customization, or just fun enhancements in your favorite games, DP Hub has got you covered! 🚀</p>
 </section>
 
 <footer>
@@ -229,74 +196,71 @@
 </footer>
 
 <textarea id="scriptBox"></textarea>
+
 <script>
-  function copyScript(text) {
+  const scriptData = [
+    { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
+    { title: "Universal Infinite HP", desc: "Full Protection in some games", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/antiknock.lua'))()` },
+    { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua"))()` },
+    { title: "Driving Empire", desc: "Auto Farm, Car Fly", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Driving%20Empire.lua"))()` },
+    { title: "Funnel Tycoon 2", desc: "Inf Money", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/FunnelTycoon2.lua"))()` },
+    { title: "The $1,000,000 Glass Bridge", desc: "Inf Money", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/TheGlassBridge.lua"))()` },
+    { title: "The Storage", desc: "Inf Money, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/CoolXplo/DP-HUB-coolxplo/main/The_Storage.lua"))()` },
+    { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
+    { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` },
+    { title: "Starving Artists", desc: "Auto Draw Arts", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/starving%20artists.lua'))()` },
+    { title: "Break in story", desc: "Role changer, Tool Giver", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/BreakInStory.lua"))()` },
+    { title: "Eat Blobs Simulator", desc: "Turn Inf Size", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EatBlobsSimulator.lua'))()` },
+    { title: "Dig to Earth's CORE", desc: "Auto Wins", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Dig%20to%20Earth's%20CORE.lua"))()` },
+    { title: "Westbound", desc: "Auto Bonds", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/westbond.lua'))()` },
+    { title: "Blade Ball", desc: "Auto Parry, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/bladeball.lua"))()` },
+    { title: "Graphic Controller", desc: "Improve performance", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Graphic%20controller.lua"))()` }
+  ];
+
+  const home = document.getElementById("home");
+
+  scriptData.forEach(({ title, desc, code }) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<h3>${title}</h3><p>${desc}</p><button onclick="copyScript(\`${code.replace(/`/g, '\\`')}\`)">Copy Script</button>`;
+    home.appendChild(card);
+  });
+
+  function copyScript(code) {
     const box = document.getElementById("scriptBox");
     box.style.display = "block";
-    box.value = text;
+    box.value = code;
     box.select();
     document.execCommand("copy");
     box.style.display = "none";
     alert("✅ Script copied!");
   }
-</script>
 
-<script>
-  const tabs = document.querySelectorAll('.nav-bar a');
-  const aboutSection = document.getElementById('about');
-  const homeSection = document.getElementById('home');
+  function showTab(tab) {
+    document.getElementById('home').style.display = tab === 'home' ? 'grid' : 'none';
+    document.getElementById('about').style.display = tab === 'about' ? 'block' : 'none';
+    document.querySelectorAll('.nav-bar a').forEach(a => a.classList.remove('active-tab'));
+    const activeTab = [...document.querySelectorAll('.nav-bar a')].find(a => a.textContent.toLowerCase() === tab);
+    if (activeTab) activeTab.classList.add('active-tab');
+  }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', e => {
-      e.preventDefault();
-      const target = tab.getAttribute('href').substring(1);
-
-      if (target === 'about') {
-        aboutSection.style.display = 'block';
-        homeSection.style.display = 'none';
-      } else {
-        aboutSection.style.display = 'none';
-        homeSection.style.display = 'grid';
-      }
-
-      tabs.forEach(t => t.classList.remove('active-tab'));
-      tab.classList.add('active-tab');
-    });
-  });
-</script>
-
-<!-- Particle Background Script -->
-<script>
+  // Particle Background
   const canvas = document.getElementById("bg");
   const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   const particles = [];
   for (let i = 0; i < 100; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 2 + 1,
-      d: Math.random() * 1,
-    });
+    particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 2 + 1, d: Math.random() * 1 });
   }
 
-  function draw() {
+  function drawParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "white";
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
+    for (let p of particles) {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
       ctx.fill();
-    }
-    update();
-  }
-
-  function update() {
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
       p.y += p.d;
       if (p.y > canvas.height) {
         p.y = 0;
@@ -305,7 +269,7 @@
     }
   }
 
-  setInterval(draw, 33);
+  setInterval(drawParticles, 33);
   window.onresize = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
