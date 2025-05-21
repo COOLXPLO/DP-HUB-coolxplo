@@ -116,6 +116,9 @@
 <header>
   <img src="https://yt3.googleusercontent.com/VZFsH87J_cdIIAUJgNQEj0SYUSCu9xYOwAvFj73Sbrr9u6914UXUHEBnLhdOPMbDNQWuJzG3Omc=s900-c-k-c0x00ffffff-no-rj" alt="Dragon">
   <h1>DP Hub</h1>
+   <a href="https://discord.gg/cVX9QpPkYE" target="_blank" class="discord-icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />
+  </a>
 </header>
 
 <div class="container">
