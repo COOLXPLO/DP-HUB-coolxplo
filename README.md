@@ -182,11 +182,12 @@
       { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
       { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` },
       { title: "Starving Artists", desc: "Auto Draw Arts", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/starving%20artists.lua'))()` },
-      { title: "Break in story", desc: "R", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EatBlobsSimulator.lua'))()` },
-      { title: "Eat Blobs Simulator", desc: "Turn Inf Size", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Invis'))()` },
-      { title: "Item Giver", desc: "Spawn items into inventory", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Giver'))()` },
-      { title: "Knife Ability Script", desc: "Use all abilities in Knife Game", code: `loadstring(game:HttpGet('https://pastebin.com/raw/Knife'))()` },
-      { title: "OP GUI Hub", desc: "All-in-one GUI for exploits", code: `loadstring(game:HttpGet('https://pastebin.com/raw/OPGUI'))()` },
+      { title: "Break in story", desc: "Role changer, Tool Giver", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/BreakInStory.lua"))()` },
+      { title: "Eat Blobs Simulator", desc: "Turn Inf Size", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EatBlobsSimulator.lua'))()` },
+      { title: "Dig to Earth's CORE", desc: "Auto Wins", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Dig%20to%20Earth's%20CORE.lua"))()` },
+      { title: "Westbound", desc: "Auto Bonds", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/westbond.lua'))()` },
+      { title: "Blade Ball", desc: "Auto Parry, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/bladeball.lua"))()` },
+      { title: "Graphic Controller", desc: "", code: `loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Graphic%20controller.lua"))()` },
     ];
 
     document.write(
