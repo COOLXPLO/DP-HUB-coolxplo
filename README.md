@@ -187,7 +187,7 @@
       { title: "Dig to Earth's CORE", desc: "Auto Wins", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Dig%20to%20Earth's%20CORE.lua"))()` },
       { title: "Westbound", desc: "Auto Bonds", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/westbond.lua'))()` },
       { title: "Blade Ball", desc: "Auto Parry, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/bladeball.lua"))()` },
-      { title: "Graphic Controller", desc: "", code: `loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Graphic%20controller.lua"))()` },
+      { title: "Graphic Controller", desc: "", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Graphic%20controller.lua"))()` },
     ];
 
     document.write(
