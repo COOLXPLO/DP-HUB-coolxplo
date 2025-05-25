@@ -188,6 +188,9 @@
       { title: "Westbound", desc: "Auto Bonds", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/westbond.lua'))()` },
       { title: "Blade Ball", desc: "Auto Parry, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/bladeball.lua"))()` },
       { title: "Graphic Controller", desc: "", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Graphic%20controller.lua"))()` },
+      { title: "Bubble Gum Simulator INFINITY", desc: "Auto farm", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Bumblegum.lua"))()` },
+      { title: "Color Game", desc: "Inf Everything", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/ColorGame.lua"))()` },
+      { title: "Universal Aimbot and ESP", desc: "Every Shooting Game", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/UniversalAim.lua"))()` },
     ];
 
     document.write(
