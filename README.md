@@ -191,6 +191,7 @@
       { title: "Bubble Gum Simulator INFINITY", desc: "Auto farm", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Bumblegum.lua"))()` },
       { title: "Color Game", desc: "Inf Everything", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/ColorGame.lua"))()` },
       { title: "Universal Aimbot and ESP", desc: "Every Shooting Game", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/UniversalAim.lua"))()` },
+      { title: "Ninja Legends", desc: "Auto Everthing", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/NINJA.lua"))()` },
     ];
 
     document.write(
