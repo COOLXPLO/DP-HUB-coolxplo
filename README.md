@@ -1,319 +1,177 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DP Hub – Top Roblox Scripts</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+    :root{
+      --bg1:#0a0a0a;
+      --bg2:#1a0a0a;
+      --primary:#ff0000;
+      --secondary:#ff5555;
+      --text:#ffffff;
     }
 
-    body {
-      background: #000;
-      color: #fff;
-      overflow-x: hidden;
-      position: relative;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',Segoe UI,sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255,0,0,0.15) 0%, rgba(10,10,10,0) 60%),
+        radial-gradient(circle at 75% 70%, rgba(255,85,85,0.12) 0%, rgba(10,10,10,0) 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      background-attachment: fixed;
+      animation:gradientShift 25s ease infinite;
+    }
+    @keyframes gradientShift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+
+    #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1000;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width .25s ease-out;}
+
+    nav{
+      position:fixed;top:0;left:0;width:100%;z-index:999;
+      border-bottom:1px solid rgba(255,255,255,.04);
+      backdrop-filter:blur(14px);
+      background:rgba(16,16,20,.35);
+    }
+    .navwrap{max-width:1200px;margin:0 auto;padding:.9rem 1rem;display:flex;align-items:center;justify-content:space-between;}
+    .brand{font-family:Poppins,Inter,Arial,sans-serif;font-size:1.15rem;font-weight:600;color:var(--primary);letter-spacing:.03em;}
+    nav ul{list-style:none;display:flex;gap:2rem;}
+    nav a{color:var(--text);font-weight:600;position:relative;transition:color .3s;}
+    nav a::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--primary);transition:width .35s;}
+    nav a:hover{color:var(--primary)}
+    nav a:hover::after{width:100%}
+
+    .menu-toggle{display:none;width:36px;height:36px;background:none;border:none;cursor:pointer;position:relative;}
+    .menu-toggle span,.menu-toggle::before,.menu-toggle::after{content:'';position:absolute;left:0;width:100%;height:3px;border-radius:3px;background:var(--text);transition:.35s;}
+    .menu-toggle span{top:50%;transform:translateY(-50%);} .menu-toggle::before{top:9px}.menu-toggle::after{bottom:9px}
+    nav.open .menu-toggle::before{top:50%;transform:translateY(-50%) rotate(45deg)}
+    nav.open .menu-toggle::after{top:50%;transform:translateY(-50%) rotate(-45deg)}
+    nav.open .menu-toggle span{opacity:0}
+
+    @media(max-width:768px){
+      .menu-toggle{display:block}
+      nav ul{display:none;flex-direction:column;gap:1.2rem;margin-top:1rem}
+      nav.open ul{display:flex}
+      nav{max-height:66px;overflow:hidden}nav.open{max-height:400px}
+      .navwrap{flex-direction:row}nav.open .navwrap{flex-direction:column;align-items:flex-start;gap:.7rem}
     }
 
-    canvas#bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
+    section{max-width:1100px;margin:0 auto;padding:5rem 1rem}
 
-    header {
-      background-color: #111;
-      border-bottom: 2px solid red;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
+    .hero{min-height:90vh;display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap;padding-top:7rem;text-align:left;}
+    .avatar{width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid var(--primary);box-shadow:0 0 12px var(--primary);}
+    .intro-text h1{font-size:clamp(2.8rem,6vw,4.8rem);font-weight:700;color:var(--primary);}
+    .intro-text p{margin-top:1.3rem;font-size:1.15rem;max-width:620px;line-height:1.55}
 
-    header img {
-      width: 50px;
-      height: 50px;
-      margin-right: 1rem;
+    .grid-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:2.2rem;}
+    .card{
+      position:relative;width:320px;padding:2.4rem 1.4rem;background:linear-gradient(135deg,rgba(255,0,0,0.17) 0%,rgba(255,85,85,0.17) 100%);
+      border:1px solid rgba(255,255,255,.05);backdrop-filter:blur(28px);border-radius:1.2rem;text-align:center;overflow:hidden;
+      transition:box-shadow .3s,transform .3s;cursor:pointer;color:inherit;text-decoration:none;
     }
+    .card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 0 34px 6px var(--secondary);}
+    .card h3{font-size:1.4rem;font-weight:700;margin-bottom:.5rem;color:var(--primary);}
+    .card p{font-size:0.95rem;opacity:.85;}
+    .card button{
+      margin-top:1rem;
+      background:var(--primary);
+      color:#000;
+      border:none;
+      padding:.6rem 1.2rem;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      transition:background .3s, transform .3s;
+    }
+    .card button:hover{background:var(--secondary);transform:scale(1.05);}
 
-    header h1 {
-      color: red;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .discord-icon {
-      margin-left: auto;
-    }
-
-    .discord-icon img {
-      width: 40px;
-      height: 40px;
-      filter: drop-shadow(0 0 10px #7289da);
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .discord-icon img:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 15px #7289da);
-    }
-
-    .nav-bar {
-      display: flex;
-      justify-content: center;
-      background: #111;
-      padding: 0.5rem;
-      gap: 2rem;
-      border-bottom: 1px solid red;
-    }
-
-    .nav-bar a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    .nav-bar a:hover,
-    .nav-bar .active-tab {
-      color: red;
-    }
-
-    .section {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: #1a1a1a;
-      border: 1px solid #444;
-      border-left: 4px solid red;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px red;
-    }
-
-    .card h3 {
-      color: red;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p {
-      color: #ccc;
-      font-size: 0.9rem;
-    }
-
-    .card button {
-      margin-top: 1rem;
-      background: red;
-      color: black;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .card button:hover {
-      background: #ff4d4d;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.875rem;
-      color: #777;
-      z-index: 1;
-      position: relative;
-    }
-
-    textarea {
-      display: none;
-    }
+    footer{text-align:center;padding:3rem 1rem;font-size:.85rem;opacity:.7;}
   </style>
 </head>
 <body>
+  <div id="progress"></div>
 
-<canvas id="bg"></canvas>
+  <nav id="siteNav">
+    <div class="navwrap">
+      <span class="brand">DP Hub</span>
+      <button class="menu-toggle" id="menuToggle"><span></span></button>
+      <ul>
+        <li><a href="#home" class="active-tab">Home</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<header>
-  <img src="https://yt3.googleusercontent.com/VZFsH87J_cdIIAUJgNQEj0SYUSCu9xYOwAvFj73Sbrr9u6914UXUHEBnLhdOPMbDNQWuJzG3Omc=s900-c-k-c0x00ffffff-no-rj" alt="Dragon">
-  <h1>DP Hub</h1>
-  <a href="https://discord.gg/cVX9QpPkYE" target="_blank" class="discord-icon">
-    <img src="https://i.pinimg.com/1200x/c1/62/5d/c1625d28e215bde2df23e15d3f950cfe.jpg" alt="Discord" />
-  </a>
-</header>
+  <section id="home" class="hero">
+    <img src="https://yt3.googleusercontent.com/VZFsH87J_cdIIAUJgNQEj0SYUSCu9xYOwAvFj73Sbrr9u6914UXUHEBnLhdOPMbDNQWuJzG3Omc=s900-c-k-c0x00ffffff-no-rj" alt="DP Hub Avatar" class="avatar" />
+    <div class="intro-text">
+      <h1>DP Hub</h1>
+      <p>The ultimate Roblox scripting hub. High-quality scripts for top executors like Dex, Delta, and Vega X.</p>
+    </div>
+  </section>
 
-<nav class="nav-bar">
-  <a href="#home" class="active-tab">Home</a>
-  <a href="#about">About</a>
-</nav>
+  <section id="scripts">
+    <h2 style="text-align:center;margin-bottom:2rem;">Top Roblox Scripts</h2>
+    <div class="grid-flex" id="scriptContainer"></div>
+  </section>
 
-<div class="container" id="home">
-  <!-- Top 15 Script Cards -->
+  <section id="about">
+    <h2 style="text-align:center;margin-bottom:1.5rem;color:var(--primary)">About DP Hub</h2>
+    <p style="max-width:700px;margin:0 auto 1.5rem;text-align:center">
+      Made by <strong>Plo_mex</strong> &amp; <strong>IamUnknown77</strong>. DP Hub is designed for Roblox enthusiasts who love automation, customization, and fun enhancements. All scripts are free and regularly updated.
+    </p>
+  </section>
+
+  <footer>© 2025 DP Hub. All rights reserved.</footer>
+
+  <textarea id="scriptBox"></textarea>
+
   <script>
+    // Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const siteNav    = document.getElementById('siteNav');
+    menuToggle.addEventListener('click', () => siteNav.classList.toggle('open'));
+    window.addEventListener('resize', () => siteNav.classList.remove('open'));
+
+    // Scroll Progress
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progress.style.width = (winScroll / height) * 100 + '%';
+    });
+
+    // Scripts
     const scripts = [
       { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
-      { title: "Universal Infinite HP", desc: "Full Protection in some games", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/antiknock.lua'))()` },
       { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
-      { title: "Driving Empire", desc: "Auto Farm, Car Fly", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Driving%20Empire.lua", true))()` },
-      { title: "Funnel Tycoon 2", desc: "Inf Money", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/FunnelTycoon2.lua", true))()` },
-      { title: "The $1,000,000 Glass Bridge", desc: "Inf Money", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/TheGlassBridge.lua", true))()` },
-      { title: "The Storage", desc: "Inf Money, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/CoolXplo/DP-HUB-coolxplo/main/The_Storage.lua"))()` },
       { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
-      { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` },
-      { title: "Starving Artists", desc: "Auto Draw Arts", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/starving%20artists.lua'))()` },
-      { title: "Break in story", desc: "Role changer, Tool Giver", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/BreakInStory.lua"))()` },
-      { title: "Eat Blobs Simulator", desc: "Turn Inf Size", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EatBlobsSimulator.lua'))()` },
-      { title: "Dig to Earth's CORE", desc: "Auto Wins", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Dig%20to%20Earth's%20CORE.lua"))()` },
-      { title: "Westbound", desc: "Auto Bonds", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/westbond.lua'))()` },
-      { title: "Blade Ball", desc: "Auto Parry, Much More", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/bladeball.lua"))()` },
-      { title: "Graphic Controller", desc: "", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Graphic%20controller.lua"))()` },
-      { title: "Bubble Gum Simulator INFINITY", desc: "Auto farm", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Bumblegum.lua"))()` },
-      { title: "Color Game", desc: "Inf Everything", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/ColorGame.lua"))()` },
-      { title: "Universal Aimbot and ESP", desc: "Every Shooting Game", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/UniversalAim.lua"))()` },
-      { title: "Ninja Legends", desc: "Auto Everthing", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/NINJA.lua"))()` },
+      { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
     ];
 
-    document.write(
-      scripts.map(script => `
-        <div class="card">
-          <h3>${script.title}</h3>
-          <p>${script.desc}</p>
-          <button onclick="copyScript(\`${script.code}\`)">Copy Script</button>
-        </div>
-      `).join("")
-    );
+    const container = document.getElementById('scriptContainer');
+    scripts.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<h3>${s.title}</h3><p>${s.desc}</p><button onclick="copyScript(\`${s.code}\`)">Copy Script</button>`;
+      container.appendChild(card);
+    });
+
+    function copyScript(text){
+      const box = document.getElementById('scriptBox');
+      box.style.display = "block";
+      box.value = text;
+      box.select();
+      document.execCommand("copy");
+      box.style.display = "none";
+      alert("✅ Script copied!");
+    }
   </script>
-</div>
-
-<section id="about" class="section" style="display: none;">
-  <h2 style="color: red;">About</h2>
-  <p><strong>Made by:</strong> Plo_mex and IamUnknown77</p>
-
-  <h3>Introduction</h3>
-  <p>DP Hub – The Ultimate Roblox Scripting Hub</p>
-  <p>
-    Welcome to DP Hub, the next-generation scripting hub designed for Roblox enthusiasts who love customization, efficiency, and powerful scripts. Created by Plo_mex and iamunknown77, DP Hub brings you a seamless experience with high-quality scripts that work on top executors like Dex, Delta, and Vega X.
-  </p>
-
-  <h3>Why Choose DP Hub?</h3>
-  <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
-    <li>✅ Powerful & Optimized Scripts – Enjoy well-coded scripts designed for smooth performance.</li>
-    <li>✅ Wide Executor Compatibility – Works with all good executors, ensuring a hassle-free experience.</li>
-    <li>✅ User-Friendly Interface – Designed for both beginners and experienced scripters.</li>
-    <li>✅ Regular Updates – Stay ahead with frequently updated scripts.</li>
-    <li>✅ Free & Reliable – No unnecessary paywalls, just quality scripts for everyone.</li>
-  </ul>
-
-  <p>Whether you're looking for automation, customization, or simply fun enhancements in your favorite games, DP Hub has got you covered! 🚀</p>
-</section>
-
-<footer>
-  &copy; 2025 DP Hub. All rights reserved.
-</footer>
-
-<textarea id="scriptBox"></textarea>
-<script>
-  function copyScript(text) {
-    const box = document.getElementById("scriptBox");
-    box.style.display = "block";
-    box.value = text;
-    box.select();
-    document.execCommand("copy");
-    box.style.display = "none";
-    alert("✅ Script copied!");
-  }
-</script>
-
-<script>
-  const tabs = document.querySelectorAll('.nav-bar a');
-  const aboutSection = document.getElementById('about');
-  const homeSection = document.getElementById('home');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', e => {
-      e.preventDefault();
-      const target = tab.getAttribute('href').substring(1);
-
-      if (target === 'about') {
-        aboutSection.style.display = 'block';
-        homeSection.style.display = 'none';
-      } else {
-        aboutSection.style.display = 'none';
-        homeSection.style.display = 'grid';
-      }
-
-      tabs.forEach(t => t.classList.remove('active-tab'));
-      tab.classList.add('active-tab');
-    });
-  });
-</script>
-
-<!-- Particle Background Script -->
-<script>
-  const canvas = document.getElementById("bg");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const particles = [];
-  for (let i = 0; i < 100; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 2 + 1,
-      d: Math.random() * 1,
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "white";
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
-      ctx.fill();
-    }
-    update();
-  }
-
-  function update() {
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      p.y += p.d;
-      if (p.y > canvas.height) {
-        p.y = 0;
-        p.x = Math.random() * canvas.width;
-      }
-    }
-  }
-
-  setInterval(draw, 33);
-  window.onresize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  };
-</script>
 </body>
 </html>
