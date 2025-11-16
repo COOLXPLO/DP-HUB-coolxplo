@@ -165,7 +165,7 @@
 
   // Scripts
   const scripts = [
-    { title: "Grow a Garden", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Garden.lua"))()` },
+    { title: "Grow a Garden", desc: "Keyless", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Garden.lua"))()` },
     { title: "99 Nights in the Fores", desc: "Fly, Float, Instant Win ,but still needs skill", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/99.lua", true))()` },
     { title: "Emergency Hamburg", desc: "Made with LOve>!", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EH.lua"))()` },
     { title: "Murder Mystery 2", desc: "Get Win everytime:)", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
