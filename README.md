@@ -165,10 +165,10 @@
 
   // Scripts
   const scripts = [
-    { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
-    { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
-    { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
-    { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
+    { title: "Grow a Garden", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Garden.lua"))()` },
+    { title: "99 Nights in the Fores", desc: "Fly, Float, Instant Win ,but still needs skill", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/99.lua", true))()` },
+    { title: "Emergency Hamburg", desc: "Made with LOve>!", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EH.lua"))()` },
+    { title: "Murder Mystery 2", desc: "Get Win everytime:)", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
   ];
 
   const container = document.getElementById('scriptContainer');
