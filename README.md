@@ -22,16 +22,14 @@
       min-height:100vh;
       overflow-x:hidden;
       color:var(--text);
-      background:linear-gradient(135deg,var(--bg1),var(--bg2));
-      position:relative;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(255,0,0,0.15) 0%, rgba(10,10,10,0) 60%),
+        radial-gradient(circle at 75% 70%, rgba(255,85,85,0.12) 0%, rgba(10,10,10,0) 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      background-attachment: fixed;
+      animation:gradientShift 25s ease infinite;
     }
-
-    canvas#bg{
-      position:fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      z-index:0;
-    }
+    @keyframes gradientShift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
 
     #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1000;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width .25s ease-out;}
 
@@ -64,21 +62,21 @@
       .navwrap{flex-direction:row}nav.open .navwrap{flex-direction:column;align-items:flex-start;gap:.7rem}
     }
 
-    section{max-width:1100px;margin:0 auto;padding:5rem 1rem;position:relative;z-index:1}
+    section{max-width:1100px;margin:0 auto;padding:5rem 1rem}
 
-    .hero{min-height:80vh;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;padding-top:7rem;text-align:left;}
-    .avatar{width:200px;height:200px;border-radius:50%;object-fit:cover;border:4px solid var(--primary);box-shadow:0 0 12px var(--primary);}
-    .intro-text h1{font-size:clamp(2.8rem,6vw,4.5rem);font-weight:700;color:var(--primary);}
-    .intro-text p{margin-top:1rem;font-size:1.1rem;max-width:620px;line-height:1.5}
+    .hero{min-height:90vh;display:flex;align-items:center;justify-content:center;gap:4rem;flex-wrap:wrap;padding-top:7rem;text-align:left;}
+    .avatar{width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid var(--primary);box-shadow:0 0 12px var(--primary);}
+    .intro-text h1{font-size:clamp(2.8rem,6vw,4.8rem);font-weight:700;color:var(--primary);}
+    .intro-text p{margin-top:1.3rem;font-size:1.15rem;max-width:620px;line-height:1.55}
 
     .grid-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:2.2rem;}
     .card{
-      position:relative;width:300px;padding:2rem 1rem;background:linear-gradient(135deg,rgba(255,0,0,0.17) 0%,rgba(255,85,85,0.17) 100%);
+      position:relative;width:320px;padding:2.4rem 1.4rem;background:linear-gradient(135deg,rgba(255,0,0,0.17) 0%,rgba(255,85,85,0.17) 100%);
       border:1px solid rgba(255,255,255,.05);backdrop-filter:blur(28px);border-radius:1.2rem;text-align:center;overflow:hidden;
       transition:box-shadow .3s,transform .3s;cursor:pointer;color:inherit;text-decoration:none;
     }
-    .card:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 0 28px 5px var(--secondary);}
-    .card h3{font-size:1.3rem;font-weight:700;margin-bottom:.5rem;color:var(--primary);}
+    .card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 0 34px 6px var(--secondary);}
+    .card h3{font-size:1.4rem;font-weight:700;margin-bottom:.5rem;color:var(--primary);}
     .card p{font-size:0.95rem;opacity:.85;}
     .card button{
       margin-top:1rem;
@@ -93,143 +91,87 @@
     }
     .card button:hover{background:var(--secondary);transform:scale(1.05);}
 
-    .discord-btn {
-      display:inline-block;padding:1rem 2rem;font-weight:600;color:#fff;
-      background:linear-gradient(135deg, rgba(255,0,0,0.17), rgba(255,85,85,0.17));
-      border:1px solid rgba(255,255,255,0.05);backdrop-filter:blur(28px);border-radius:1.3rem;text-decoration:none;
-      transition:transform .3s, box-shadow .3s;
-    }
-    .discord-btn:hover{
-      transform:translateY(-6px) scale(1.05);
-      box-shadow:0 0 28px 8px var(--secondary);
-    }
-
     footer{text-align:center;padding:3rem 1rem;font-size:.85rem;opacity:.7;}
   </style>
 </head>
 <body>
+  <div id="progress"></div>
 
-<canvas id="bg"></canvas>
-<div id="progress"></div>
+  <nav id="siteNav">
+    <div class="navwrap">
+      <span class="brand">DP Hub</span>
+      <button class="menu-toggle" id="menuToggle"><span></span></button>
+      <ul>
+        <li><a href="#home" class="active-tab">Home</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<nav id="siteNav">
-  <div class="navwrap">
-    <span class="brand">DP Hub</span>
-    <button class="menu-toggle" id="menuToggle"><span></span></button>
-    <ul>
-      <li><a href="#home" class="active-tab">Home</a></li>
-      <li><a href="#scripts">Scripts</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </div>
-</nav>
+  <section id="home" class="hero">
+    <img src="https://yt3.googleusercontent.com/VZFsH87J_cdIIAUJgNQEj0SYUSCu9xYOwAvFj73Sbrr9u6914UXUHEBnLhdOPMbDNQWuJzG3Omc=s900-c-k-c0x00ffffff-no-rj" alt="DP Hub Avatar" class="avatar" />
+    <div class="intro-text">
+      <h1>DP Hub</h1>
+      <p>The ultimate Roblox scripting hub. High-quality scripts for top executors like Dex, Delta, and Vega X.</p>
+    </div>
+  </section>
 
-<section id="home" class="hero">
-  <img src="https://yt3.googleusercontent.com/VZFsH87J_cdIIAUJgNQEj0SYUSCu9xYOwAvFj73Sbrr9u6914UXUHEBnLhdOPMbDNQWuJzG3Omc=s900-c-k-c0x00ffffff-no-rj" alt="DP Hub Avatar" class="avatar"/>
-  <div class="intro-text">
-    <h1>DP Hub</h1>
-    <p>The ultimate Roblox scripting hub. High-quality scripts for top executors like Dex, Delta, and Vega X.</p>
-    <a href="https://discord.gg/cVX9QpPkYE" target="_blank" class="discord-btn">Join Discord</a>
-  </div>
-</section>
+  <section id="scripts">
+    <h2 style="text-align:center;margin-bottom:2rem;">Top Roblox Scripts</h2>
+    <div class="grid-flex" id="scriptContainer"></div>
+  </section>
 
-<section id="scripts">
-  <h2 style="text-align:center;margin-bottom:2rem;">Top Roblox Scripts</h2>
-  <div class="grid-flex" id="scriptContainer"></div>
-</section>
+  <section id="about">
+    <h2 style="text-align:center;margin-bottom:1.5rem;color:var(--primary)">About DP Hub</h2>
+    <p style="max-width:700px;margin:0 auto 1.5rem;text-align:center">
+      Made by <strong>Plo_mex</strong> &amp; <strong>IamUnknown77</strong>. DP Hub is designed for Roblox enthusiasts who love automation, customization, and fun enhancements. All scripts are free and regularly updated.
+    </p>
+  </section>
 
-<section id="about">
-  <h2 style="text-align:center;margin-bottom:1.5rem;color:var(--primary)">About DP Hub</h2>
-  <p style="max-width:700px;margin:0 auto 1.5rem;text-align:center">
-    Made by <strong>Plo_mex</strong> &amp; <strong>IamUnknown77</strong>. DP Hub is designed for Roblox enthusiasts who love automation, customization, and fun enhancements. All scripts are free and regularly updated.
-  </p>
-</section>
+  <footer>© 2025 DP Hub. All rights reserved.</footer>
 
-<footer>© 2025 DP Hub. All rights reserved.</footer>
+  <textarea id="scriptBox"></textarea>
 
-<textarea id="scriptBox"></textarea>
+  <script>
+    // Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const siteNav    = document.getElementById('siteNav');
+    menuToggle.addEventListener('click', () => siteNav.classList.toggle('open'));
+    window.addEventListener('resize', () => siteNav.classList.remove('open'));
 
-<script>
-  // Menu toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const siteNav = document.getElementById('siteNav');
-  menuToggle.addEventListener('click', () => siteNav.classList.toggle('open'));
-  window.addEventListener('resize', () => siteNav.classList.remove('open'));
-
-  // Scroll progress
-  const progress = document.getElementById('progress');
-  window.addEventListener('scroll', () => {
-    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    progress.style.width = (winScroll / height) * 100 + '%';
-  });
-
-  // Scripts
-  const scripts = [
-    { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
-    { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
-    { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
-    { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
-  ];
-
-  const container = document.getElementById('scriptContainer');
-  scripts.forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `<h3>${s.title}</h3><p>${s.desc}</p><button class="copy-btn" data-code="${encodeURIComponent(s.code)}">Copy Script</button>`;
-    container.appendChild(card);
-  });
-
-  document.addEventListener('click', function(e){
-    if(e.target && e.target.classList.contains('copy-btn')){
-      const code = decodeURIComponent(e.target.getAttribute('data-code'));
-      const textarea = document.createElement('textarea');
-      textarea.value = code;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      alert('✅ Script copied!');
-    }
-  });
-
-  // Particle background
-  const canvas = document.getElementById("bg");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const particles = [];
-  for(let i=0;i<120;i++){
-    particles.push({
-      x: Math.random()*canvas.width,
-      y: Math.random()*canvas.height,
-      r: Math.random()*2+1,
-      d: Math.random()*1.5
+    // Scroll Progress
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progress.style.width = (winScroll / height) * 100 + '%';
     });
-  }
 
-  function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="white";
-    for(let i=0;i<particles.length;i++){
-      const p=particles[i];
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
-      ctx.fill();
+    // Scripts
+    const scripts = [
+      { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
+      { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
+      { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
+      { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
+    ];
+
+    const container = document.getElementById('scriptContainer');
+    scripts.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<h3>${s.title}</h3><p>${s.desc}</p><button onclick="copyScript(\`${s.code}\`)">Copy Script</button>`;
+      container.appendChild(card);
+    });
+
+    function copyScript(text){
+      const box = document.getElementById('scriptBox');
+      box.style.display = "block";
+      box.value = text;
+      box.select();
+      document.execCommand("copy");
+      box.style.display = "none";
+      alert("✅ Script copied!");
     }
-    update();
-  }
-
-  function update(){
-    for(let i=0;i<particles.length;i++){
-      const p=particles[i];
-      p.y+=p.d;
-      if(p.y>canvas.height){p.y=0;p.x=Math.random()*canvas.width;}
-    }
-  }
-
-  setInterval(draw,33);
-  window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
-</script>
+  </script>
 </body>
 </html>
