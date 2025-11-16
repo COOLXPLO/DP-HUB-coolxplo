@@ -147,31 +147,39 @@
       progress.style.width = (winScroll / height) * 100 + '%';
     });
 
-    // Scripts
-    const scripts = [
-      { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
-      { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
-      { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
-      { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
-    ];
+    <div class="grid-flex" id="scriptContainer"></div>
 
-    const container = document.getElementById('scriptContainer');
-    scripts.forEach(s => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `<h3>${s.title}</h3><p>${s.desc}</p><button onclick="copyScript(\`${s.code}\`)">Copy Script</button>`;
-      container.appendChild(card);
-    });
+<script>
+  const scripts = [
+    { title: "Blox Fruits Script", desc: "Auto Chest", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Blox Fruit.lua"))()` },
+    { title: "Tower Of Hell", desc: "Fly, Float, Instant Win ,Tool giver", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()` },
+    { title: "Drill Digging Simulator", desc: "Inf Money,Gems, Gets all drills", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/Drill.lua"))()` },
+    { title: "Murder Mystery 2", desc: "Get Win everytime", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
+  ];
 
-    function copyScript(text){
-      const box = document.getElementById('scriptBox');
-      box.style.display = "block";
-      box.value = text;
-      box.select();
-      document.execCommand("copy");
-      box.style.display = "none";
-      alert("✅ Script copied!");
+  const container = document.getElementById('scriptContainer');
+
+  scripts.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+      <button class="copy-btn" data-code="${encodeURIComponent(s.code)}">Copy Script</button>
+    `;
+    container.appendChild(card);
+  });
+
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.classList.contains('copy-btn')){
+      const code = decodeURIComponent(e.target.getAttribute('data-code'));
+      const textarea = document.createElement('textarea');
+      textarea.value = code;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      alert('✅ Script copied!');
     }
-  </script>
-</body>
-</html>
+  });
+</script>
