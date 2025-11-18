@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -59,8 +60,10 @@
       .menu-toggle{display:block}
       nav ul{display:none;flex-direction:column;gap:1.2rem;margin-top:1rem}
       nav.open ul{display:flex}
-      nav{max-height:66px;overflow:hidden}nav.open{max-height:400px}
-      .navwrap{flex-direction:row}nav.open .navwrap{flex-direction:column;align-items:flex-start;gap:.7rem}
+      nav{max-height:66px;overflow:hidden}
+      nav.open{max-height:400px}
+      .navwrap{flex-direction:row}
+      nav.open .navwrap{flex-direction:column;align-items:flex-start;gap:.7rem}
     }
 
     section{max-width:1100px;margin:0 auto;padding:5rem 1rem;position:relative;z-index:1}
@@ -106,6 +109,7 @@
     footer{text-align:center;padding:3rem 1rem;font-size:.85rem;opacity:.7;}
   </style>
 </head>
+
 <body>
 
 <canvas id="bg"></canvas>
@@ -146,8 +150,6 @@
 
 <footer>© 2025 DP Hub. All rights reserved.</footer>
 
-<textarea id="scriptBox"></textarea>
-
 <script>
   // Menu toggle
   const menuToggle = document.getElementById('menuToggle');
@@ -163,12 +165,12 @@
     progress.style.width = (winScroll / height) * 100 + '%';
   });
 
-  // Scripts
+  // Script list
   const scripts = [
     { title: "Grow a Garden", desc: "Keyless", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Garden.lua"))()` },
-    { title: "99 Nights in the Fores", desc: "Fly, Float, Instant Win ,but still needs skill", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/99.lua", true))()` },
-    { title: "Emergency Hamburg", desc: "Made with LOve>!", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EH.lua"))()` },
-    { title: "Murder Mystery 2", desc: "Get Win everytime:)", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
+    { title: "99 Nights in the Forest", desc: "Fly, Float, Instant Win", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/99.lua", true))()` },
+    { title: "Emergency Hamburg", desc: "Made with love!", code: `loadstring(game:HttpGet("https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/EH.lua"))()` },
+    { title: "Murder Mystery 2", desc: "Win Every Time", code: `loadstring(game:HttpGet('https://raw.githubusercontent.com/COOLXPLO/DP-HUB-coolxplo/refs/heads/main/MM2.lua'))()` }
   ];
 
   const container = document.getElementById('scriptContainer');
@@ -182,12 +184,7 @@
   document.addEventListener('click', function(e){
     if(e.target && e.target.classList.contains('copy-btn')){
       const code = decodeURIComponent(e.target.getAttribute('data-code'));
-      const textarea = document.createElement('textarea');
-      textarea.value = code;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
+      navigator.clipboard.writeText(code);
       alert('✅ Script copied!');
     }
   });
@@ -199,19 +196,13 @@
   canvas.height = window.innerHeight;
   const particles = [];
   for(let i=0;i<120;i++){
-    particles.push({
-      x: Math.random()*canvas.width,
-      y: Math.random()*canvas.height,
-      r: Math.random()*2+1,
-      d: Math.random()*1.5
-    });
+    particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*2+1, d: Math.random()*1.5 });
   }
 
   function draw(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     ctx.fillStyle="white";
-    for(let i=0;i<particles.length;i++){
-      const p=particles[i];
+    for(let p of particles){
       ctx.beginPath();
       ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
       ctx.fill();
@@ -220,8 +211,7 @@
   }
 
   function update(){
-    for(let i=0;i<particles.length;i++){
-      const p=particles[i];
+    for(let p of particles){
       p.y+=p.d;
       if(p.y>canvas.height){p.y=0;p.x=Math.random()*canvas.width;}
     }
@@ -230,5 +220,6 @@
   setInterval(draw,33);
   window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 </script>
+
 </body>
 </html>
