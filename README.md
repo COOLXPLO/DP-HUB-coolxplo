@@ -5,6 +5,7 @@
   <title>DP Hub – Top Roblox Scripts</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root{
@@ -121,6 +122,7 @@
     <ul>
       <li><a href="#home" class="active-tab">Home</a></li>
       <li><a href="#scripts">Scripts</a></li>
+      <li><a href="#deobfuscator">Deobfuscator</a></li>
       <li><a href="#about">About</a></li>
     </ul>
   </div>
@@ -138,6 +140,88 @@
 <section id="scripts">
   <h2 style="text-align:center;margin-bottom:2rem;">Top Roblox Scripts</h2>
   <div class="grid-flex" id="scriptContainer"></div>
+</section>
+
+<section id="deobfuscator">
+  <h2 style="text-align:center;margin-bottom:1.5rem;color:var(--primary)">DP Hub Deobfuscator</h2>
+
+  <div class="main-container" style="
+    max-width:900px;
+    margin:0 auto;
+    padding:2rem;
+    background:rgba(255,0,0,0.12);
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:1.3rem;
+    backdrop-filter:blur(22px);
+  ">
+
+    <header style="text-align:center;margin-bottom:1.5rem;">
+      <h1 style="font-family:Poppins;font-size:2.4rem;">
+        DP Hub <span class="accent" style="color:var(--primary)">Deobfuscator</span>
+      </h1>
+      <p style="opacity:.8;">Advanced Lua & MoonSec Script Recovery</p>
+    </header>
+
+    <div class="upload-zone" id="drop-zone" style="
+      border:2px dashed rgba(255,255,255,.2);
+      padding:2rem;
+      text-align:center;
+      border-radius:1.2rem;
+      background:rgba(0,0,0,0.2);
+    ">
+      <div class="icon-container" style="font-size:3rem;margin-bottom:1rem;color:var(--primary);">
+        <i class="fa-solid fa-file-code"></i>
+      </div>
+
+      <h3>Drag & Drop or Paste Code</h3>
+      <p style="opacity:.7;">Supported formats: .txt, .lua</p>
+
+      <input type="file" id="file-input" accept=".txt,.lua" hidden>
+      <button class="browse-btn" onclick="document.getElementById('file-input').click()" style="
+        margin-top:1rem;
+        background:var(--primary);
+        padding:.6rem 1.4rem;
+        font-weight:600;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+      ">
+        Browse Files
+      </button>
+
+      <div class="divider" style="margin:1.5rem 0;opacity:.6;">OR</div>
+
+      <textarea id="text-input"
+        placeholder="Paste your obfuscated script here..."
+        style="
+          width:100%;
+          height:180px;
+          padding:1rem;
+          border-radius:.8rem;
+          background:rgba(0,0,0,.3);
+          color:white;
+          border:1px solid rgba(255,255,255,.1);
+          resize:vertical;
+        "
+      ></textarea>
+    </div>
+
+    <button id="deobf-btn" class="action-btn" style="
+      margin-top:1.5rem;
+      width:100%;
+      padding:1rem;
+      border:none;
+      font-weight:600;
+      border-radius:.8rem;
+      background:var(--primary);
+      cursor:pointer;
+    ">
+      <i class="fa-solid fa-wand-magic-sparkles"></i> Deobfuscate
+    </button>
+
+    <div id="status" class="status-msg" style="margin-top:1rem;text-align:center;"></div>
+
+  </div>
 </section>
 
 <section id="about">
@@ -220,5 +304,6 @@
   window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 </script>
 
+<script src="wtf.js"></script>
 </body>
 </html>
