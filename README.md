@@ -234,13 +234,13 @@
 <footer>© 2025 DP Hub. All rights reserved.</footer>
 
 <script>
-  // Menu toggle
+  // === MENU TOGGLE ===
   const menuToggle = document.getElementById('menuToggle');
   const siteNav = document.getElementById('siteNav');
   menuToggle.addEventListener('click', () => siteNav.classList.toggle('open'));
   window.addEventListener('resize', () => siteNav.classList.remove('open'));
 
-  // Scroll progress
+  // === SCROLL PROGRESS ===
   const progress = document.getElementById('progress');
   window.addEventListener('scroll', () => {
     const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -248,7 +248,7 @@
     progress.style.width = (winScroll / height) * 100 + '%';
   });
 
-  // Script list
+  // === SCRIPT LIST ===
   const scripts = [
     { title: "Grow a Garden", desc: "Keyless", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Garden.lua"))()` },
     { title: "99 Nights in the Forest", desc: "Fly, Float, Instant Win", code: `loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/99.lua", true))()` },
@@ -272,7 +272,7 @@
     }
   });
 
-  // Particle background
+  // === PARTICLE BACKGROUND ===
   const canvas = document.getElementById("bg");
   const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
@@ -302,8 +302,67 @@
 
   setInterval(draw,33);
   window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+
+  // === DEOBFUSCATOR JS INLINE ===
+  const fileInput = document.getElementById('file-input');
+  const textInput = document.getElementById('text-input');
+  const deobfBtn = document.getElementById('deobf-btn');
+  const status = document.getElementById('status');
+  const dropZone = document.getElementById('drop-zone');
+
+  if (fileInput) {
+      fileInput.addEventListener('change', e => {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = ev => { textInput.value = ev.target.result; };
+          reader.readAsText(file);
+      });
+  }
+
+  if (dropZone) {
+      dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = "var(--primary)"; });
+      dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = "rgba(255,255,255,.2)"; });
+      dropZone.addEventListener('drop', e => {
+          e.preventDefault(); dropZone.style.borderColor = "rgba(255,255,255,.2)";
+          const file = e.dataTransfer.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = ev => { textInput.value = ev.target.result; };
+          reader.readAsText(file);
+      });
+  }
+
+  function simpleDeobfuscate(code) {
+      if (!code) return "";
+      code = code.replace(/\s+/g, " ");
+      code = code.replace(/--\[\[[\s\S]*?\]\]/g, "");
+      code = code.replace(/--.*/g, "");
+      code = code.replace(/;{2,}/g, ";");
+      code = code.replace(/loadstring\((.*?)\)/g, "loadstring($1)");
+      return code.trim();
+
+    if (deobfBtn) {
+      deobfBtn.addEventListener('click', () => {
+          let code = textInput.value;
+
+          if (!code.trim()) {
+              status.textContent = "❌ Please paste or upload a script first.";
+              status.style.color = "red";
+              return;
+          }
+
+          const result = simpleDeobfuscate(code);
+
+          textInput.value = result;
+          status.textContent = "✅ Deobfuscation complete!";
+          status.style.color = "lightgreen";
+      });
+  }
 </script>
 
-<script src="wtf.js"></script>
 </body>
 </html>
+  }
+
+  
