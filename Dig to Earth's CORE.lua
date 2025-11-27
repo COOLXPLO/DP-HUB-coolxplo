@@ -6,7 +6,7 @@ ________ __________  .__         ___.
  |    `   \    |     |   Y  \  |  / \_\ \
 /_______  /____|     |___|  /____/|___  /
         \/                \/          \/
-\_Why You here?  (Dpp hub on top) ~  Much Love, Script stealer 
+\_Why You here?  (Dp hub on top) ~  Much Love, Script stealer 
 
 ]]--
 
