@@ -86,6 +86,42 @@ function library:CreateWindow(name, size, hidebutton)
 	window.Main.Name = "RobloxGui"
 	window.Main.DisplayOrder = 15
 
+-- ⭐ MINI TOGGLE BUTTON ⭐
+pcall(function()
+    coregui:FindFirstChild("DPHubMiniToggle"):Destroy()
+end)
+
+local MiniGui = Instance.new("ScreenGui")
+MiniGui.Name = "DPHubMiniToggle"
+MiniGui.IgnoreGuiInset = true
+MiniGui.ResetOnSpawn = false
+MiniGui.Parent = gethui and gethui() or coregui
+
+local MinButton = Instance.new("ImageButton")
+MinButton.Name = "Toggle"
+MinButton.Size = UDim2.fromOffset(42, 42)
+MinButton.Position = UDim2.new(0, 12, 1, -70)
+MinButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+MinButton.BorderSizePixel = 0
+MinButton.Image = "rbxassetid://105059922903197"
+MinButton.Active = true
+MinButton.Draggable = true
+MinButton.Parent = MiniGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1, 0)
+corner.Parent = MinButton
+
+local stroke = Instance.new("UIStroke")
+stroke.Thickness = 1.5
+stroke.Color = Color3.fromRGB(255, 80, 80)
+stroke.Parent = MinButton
+
+-- ✅ REAL TOGGLE (THIS IS THE FIX)
+MinButton.MouseButton1Click:Connect(function()
+    window.Main.Enabled = not window.Main.Enabled
+end)
+
 	local dragging, draginput2, dragstart2, startpos
 	userinputservice.InputChanged:Connect(function(input)
 		if input == draginput2 and dragging then
