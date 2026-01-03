@@ -129,7 +129,7 @@
 </nav>
 
 <section id="home" class="hero">
-  <img src="https://i.ibb.co/CK1g7p7Q/Chat-GPT-Image-Dec-15-2025-01-40-57-PM.jpg" alt="DP Hub Avatar" class="avatar"/>
+  <img src="https://ibb.co/xKRC28JN" alt="DP Hub Avatar" class="avatar"/>
   <div class="intro-text">
     <h1>DP Hub</h1>
     <p>The ultimate Roblox scripting hub. High-quality scripts for top executors like Dex, Delta, and Vega X.</p>
