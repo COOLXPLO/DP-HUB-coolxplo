@@ -129,7 +129,7 @@
 </nav>
 
 <section id="home" class="hero">
-  <img src="https://ibb.co/xKRC28JN" alt="DP Hub Avatar" class="avatar"/>
+  <img src="https://i.postimg.cc/HxVMbzW6/4bbfed36-7ac7-4835-a82f-bb7d85bd1900.png" alt="DP Hub Avatar" class="avatar"/>
   <div class="intro-text">
     <h1>DP Hub</h1>
     <p>The ultimate Roblox scripting hub. High-quality scripts for top executors like Dex, Delta, and Vega X.</p>
